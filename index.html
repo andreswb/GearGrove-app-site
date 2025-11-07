@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GearGrove - Photography Lens Inventory Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
+    header { background: linear-gradient(135deg, #1f2937 0%, #111827 100%); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    header h1 { margin: 0; font-size: 20px; display: flex; align-items: center; }
+    header h1 span { font-size: 24px; margin-right: 10px; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
+    nav a:hover { opacity: 0.8; text-decoration: underline; }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    h2 { color: #222; font-size: 2em; margin-bottom: 20px; }
+    h3 { color: #1f2937; margin-top: 30px; font-size: 1.4em; }
+    ul { margin-left: 20px; line-height: 2; }
+    ul li { margin-bottom: 8px; }
+    a.button { display: inline-block; padding: 12px 30px; margin: 20px 0; background: linear-gradient(135deg, #1f2937 0%, #111827 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(31, 41, 55, 0.4); transition: transform 0.3s, box-shadow 0.3s; }
+    a.button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(31, 41, 55, 0.6); }
+    .hidden { display: none; }
+    footer { text-align: center; padding: 20px; font-size: 0.9em; color: #555; border-top: 1px solid #ccc; margin-top: 40px; }
+    select { padding: 8px 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.2); color: white; font-weight: 600; cursor: pointer; }
+    select option { color: #333; }
+    .faq-item { margin-bottom: 25px; background: #f3f4f6; padding: 20px; border-radius: 8px; border-left: 4px solid #1f2937; }
+    .faq-item strong { color: #111827; font-size: 1.1em; display: block; margin-bottom: 10px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+    .feature-card { background: #f3f4f6; padding: 20px; border-radius: 10px; border: 2px solid #e5e7eb; }
+    .feature-card h4 { color: #111827; margin-top: 0; }
+    .note { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin: 20px 0; border-radius: 5px; }
+    .note strong { color: #92400e; }
+    .highlight-box { background: #f3f4f6; border-left: 4px solid #1f2937; padding: 20px; margin: 25px 0; border-radius: 8px; }
+    .highlight-box strong { color: #111827; font-size: 1.1em; }
+  </style>
+  
+<script>
+  function switchLanguage(lang) {
+    document.querySelectorAll('.lang').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('hidden'));
+    document.getElementById('lang-selector').value = lang;
+  }
+
+  function showSection(section) {
+    document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
+    const target = document.getElementById(section);
+    if (target) target.classList.remove('hidden');
+  }
+
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  window.onload = function() {
+    const hash = window.location.hash.substring(1);
+    const lang = getQueryParam('lang');
+
+    if (hash === 'privacy') showSection('privacy');
+    else if (hash === 'support') showSection('support');
+    else showSection('home');
+    
+    switchLanguage(lang === 'de' || lang === 'es' ? lang : 'en');
+  }
+</script>
+
+</head>
+<body>
+  <header>
+    <h1>
+      <span>📸</span>
+      GearGrove
+    </h1>
+    <nav>
+      <a href="#home" onclick="showSection('home')">Home</a>
+      <a href="#support" onclick="showSection('support')">Support</a>
+      <a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a>
+    </nav>
+    <div>
+      <select id="lang-selector" onchange="switchLanguage(this.value)">
+        <option value="en" selected>English</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- HOME SECTION -->
+    <div id="home" class="section">
+
+      <!-- English -->
+      <div class="lang lang-en">
+        <h2>GearGrove - Photography Lens Inventory Manager</h2>
+        <p>Organize your entire lens collection with ease. Track specifications, coverage gaps, warranties, and total value. Perfect for photographers who want to keep their gear organized and make informed purchasing decisions.</p>
+        
+        <div class="highlight-box">
+          <strong>🔒 Fully Offline • Complete Privacy</strong>
+          <p>GearGrove works completely offline with no internet connection required. Your lens collection data stays 100% private and secure on your device. No login, no account, no cloud sync - complete control over your data.</p>
+        </div>
+
+        <h3>Why Choose GearGrove?</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>📴 Works Offline</h4>
+            <p>No internet required. Manage your collection anywhere without connectivity concerns.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔒 No Login Required</h4>
+            <p>Your data stays on your device. Complete privacy and security with no cloud storage.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📷 195+ Pre-loaded Lenses</h4>
+            <p>Comprehensive database covering Canon, Nikon, Sony, Sigma, Tamron, and more major brands.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📊 Coverage Analysis</h4>
+            <p>Visualize your focal length and aperture coverage. Identify gaps in your collection.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🛡️ Warranty Tracking</h4>
+            <p>Monitor warranty expiration dates with alerts for lenses expiring within 30 days.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💰 Collection Value</h4>
+            <p>Track total investment value with multi-currency support and insurance information.</p>
+          </div>
+          <div class="feature-card">
+            <h4>⭐ Rating System</h4>
+            <p>Rate your lenses with a 5-star system and track your favorites.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💾 CSV Export/Import</h4>
+            <p>Backup and restore your collection with CSV file support.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📱 iPad Optimized</h4>
+            <p>Beautiful layouts designed specifically for iPad with split-screen views.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌐 Multilingual</h4>
+            <p>Full support for English, Spanish, and German interfaces.</p>
+          </div>
+        </div>
+
+        <h3>Perfect For</h3>
+        <ul>
+          <li>Professional photographers managing extensive gear collections</li>
+          <li>Hobbyists organizing their lens inventory</li>
+          <li>Gear reviewers tracking multiple lenses and systems</li>
+          <li>Photography educators managing studio equipment</li>
+          <li>Anyone wanting to optimize their lens collection</li>
+          <li>Photographers planning their next lens purchase</li>
+        </ul>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li><strong>Fully Offline:</strong> No internet connection required - complete privacy</li>
+          <li><strong>No Login Required:</strong> All data stored locally on your device</li>
+          <li><strong>Comprehensive Lens Database:</strong> 195+ pre-loaded lenses from major brands</li>
+          <li><strong>Quick Add from Database:</strong> Browse and add lenses by brand and mount</li>
+          <li><strong>Detailed Specifications:</strong> Track focal length, aperture, filter diameter, weight, dimensions</li>
+          <li><strong>Weather Sealing Info:</strong> Know which lenses are weather-sealed for outdoor shooting</li>
+          <li><strong>Image Stabilization:</strong> Track which lenses have built-in stabilization</li>
+          <li><strong>Mount Compatibility:</strong> Track lens mounts and adapter compatibility</li>
+          <li><strong>Rating System:</strong> Rate lenses from 1-5 stars to track your favorites</li>
+          <li><strong>Use Case Tracking:</strong> Assign primary and secondary use cases (Portrait, Landscape, Wildlife, etc.)</li>
+          <li><strong>Usage Counter:</strong> Track how many times you've used each lens</li>
+          <li><strong>Purchase Information:</strong> Record purchase date, price, condition, and currency</li>
+          <li><strong>Multi-Currency Support:</strong> Track values in 30+ currencies (EUR, USD, GBP, CHF, JPY, etc.)</li>
+          <li><strong>Serial Numbers:</strong> Store serial numbers and firmware versions</li>
+          <li><strong>Custom Notes:</strong> Add personal notes about each lens</li>
+          <li><strong>Coverage Analysis:</strong> Visual focal length and aperture coverage charts</li>
+          <li><strong>Gap Detection:</strong> Identify missing focal lengths and aperture ranges</li>
+          <li><strong>Warranty Tracking:</strong> Monitor warranty expiration dates with 30-day alerts</li>
+          <li><strong>Warranty Details:</strong> Store warranty information and expiry dates</li>
+          <li><strong>Collection Value:</strong> Track total purchase value and insured value by currency</li>
+          <li><strong>Value Breakdown:</strong> View lenses sorted by value from most to least expensive</li>
+          <li><strong>Insurance Information:</strong> Store insured values and policy numbers</li>
+          <li><strong>Sold Lens Tracking:</strong> Mark lenses as sold while preserving records</li>
+          <li><strong>Advanced Filtering:</strong> Filter by brand, mount, type, weather sealing, stabilization</li>
+          <li><strong>Multiple Sort Options:</strong> Sort by brand, rating, focal length, aperture, weight, date</li>
+          <li><strong>CSV Export:</strong> Export your entire collection for backup</li>
+          <li><strong>CSV Import:</strong> Import lenses from CSV with duplicate detection</li>
+          <li><strong>iPad Optimized:</strong> Split-screen layouts and grid views for larger displays</li>
+          <li><strong>Interactive Tutorial:</strong> Built-in onboarding with replay option</li>
+        </ul>
+
+        <div class="note">
+          <strong>Data Disclaimer:</strong> Lens specifications are sourced from manufacturer data and community contributions. Weather sealing information is approximate - always verify with your lens manual for outdoor use. Exchange rates are provided for convenience and may not reflect current market values.
+        </div>
+
+        <div class="note">
+          <strong>Note:</strong> GearGrove is designed for photographers who want to focus on their craft, not spreadsheets. Quick organization, smart insights, and complete privacy.
+        </div>
+
+        <a href="https://apps.apple.com/app/geargrove/id6754944208" class="button">Download on the App Store</a>
+      </div>
+
+      <!-- German -->
+      <div class="lang lang-de hidden">
+        <h2>GearGrove - Fotografie-Objektiv-Inventarverwaltung</h2>
+        <p>Organisieren Sie Ihre gesamte Objektivsammlung mit Leichtigkeit. Verfolgen Sie Spezifikationen, Abdeckungslücken, Garantien und Gesamtwert. Perfekt für Fotografen, die ihre Ausrüstung organisiert halten und fundierte Kaufentscheidungen treffen möchten.</p>
+        
+        <div class="highlight-box">
+          <strong>🔒 Vollständig Offline • Vollständige Privatsphäre</strong>
+          <p>GearGrove funktioniert komplett offline ohne Internetverbindung. Ihre Objektivsammlungsdaten bleiben 100% privat und sicher auf Ihrem Gerät. Keine Anmeldung, kein Konto, keine Cloud-Synchronisierung - vollständige Kontrolle über Ihre Daten.</p>
+        </div>
+
+        <h3>Warum GearGrove Wählen?</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>📴 Funktioniert Offline</h4>
+            <p>Kein Internet erforderlich. Verwalten Sie Ihre Sammlung überall ohne Konnektivitätsprobleme.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔒 Keine Anmeldung Erforderlich</h4>
+            <p>Ihre Daten bleiben auf Ihrem Gerät. Vollständige Privatsphäre und Sicherheit ohne Cloud-Speicherung.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📷 195+ Vorgeladene Objektive</h4>
+            <p>Umfassende Datenbank mit Canon, Nikon, Sony, Sigma, Tamron und weiteren großen Marken.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📊 Abdeckungsanalyse</h4>
+            <p>Visualisieren Sie Ihre Brennweiten- und Blendenabdeckung. Identifizieren Sie Lücken in Ihrer Sammlung.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🛡️ Garantieverfolgung</h4>
+            <p>Überwachen Sie Garantieablaufdaten mit Warnungen für Objektive, die innerhalb von 30 Tagen ablaufen.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💰 Sammlungswert</h4>
+            <p>Verfolgen Sie den gesamten Investitionswert mit Multi-Währungsunterstützung und Versicherungsinformationen.</p>
+          </div>
+          <div class="feature-card">
+            <h4>⭐ Bewertungssystem</h4>
+            <p>Bewerten Sie Ihre Objektive mit einem 5-Sterne-System und verfolgen Sie Ihre Favoriten.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💾 CSV Export/Import</h4>
+            <p>Sichern und wiederherstellen Sie Ihre Sammlung mit CSV-Dateiunterstützung.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📱 iPad-Optimiert</h4>
+            <p>Schöne Layouts speziell für iPad mit Split-Screen-Ansichten.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌐 Mehrsprachig</h4>
+            <p>Volle Unterstützung für englische, spanische und deutsche Benutzeroberflächen.</p>
+          </div>
+        </div>
+
+        <h3>Perfekt Für</h3>
+        <ul>
+          <li>Professionelle Fotografen, die umfangreiche Ausrüstungssammlungen verwalten</li>
+          <li>Hobbyisten, die ihr Objektivinventar organisieren</li>
+          <li>Ausrüstungstester, die mehrere Objektive und Systeme verfolgen</li>
+          <li>Fotografie-Pädagogen, die Studioausrüstung verwalten</li>
+          <li>Jeden, der seine Objektivsammlung optimieren möchte</li>
+          <li>Fotografen, die ihren nächsten Objektivkauf planen</li>
+        </ul>
+
+        <h3>Hauptfunktionen</h3>
+        <ul>
+          <li><strong>Vollständig Offline:</strong> Keine Internetverbindung erforderlich - vollständige Privatsphäre</li>
+          <li><strong>Keine Anmeldung Erforderlich:</strong> Alle Daten lokal auf Ihrem Gerät gespeichert</li>
+          <li><strong>Umfassende Objektivdatenbank:</strong> 195+ vorgeladene Objektive von großen Marken</li>
+          <li><strong>Schnell aus Datenbank Hinzufügen:</strong> Durchsuchen und hinzufügen von Objektiven nach Marke und Anschluss</li>
+          <li><strong>Detaillierte Spezifikationen:</strong> Verfolgen Sie Brennweite, Blende, Filterdurchmesser, Gewicht, Abmessungen</li>
+          <li><strong>Wetterschutz-Info:</strong> Wissen Sie, welche Objektive wetterfest für Outdoor-Aufnahmen sind</li>
+          <li><strong>Bildstabilisierung:</strong> Verfolgen Sie, welche Objektive eingebaute Stabilisierung haben</li>
+          <li><strong>Anschlusskompatibilität:</strong> Verfolgen Sie Objektivanschlüsse und Adapterkompatibilität</li>
+          <li><strong>Bewertungssystem:</strong> Bewerten Sie Objektive von 1-5 Sternen, um Ihre Favoriten zu verfolgen</li>
+          <li><strong>Anwendungsfall-Verfolgung:</strong> Weisen Sie primäre und sekundäre Anwendungsfälle zu (Porträt, Landschaft, Wildlife, etc.)</li>
+          <li><strong>Verwendungszähler:</strong> Verfolgen Sie, wie oft Sie jedes Objektiv verwendet haben</li>
+          <li><strong>Kaufinformationen:</strong> Erfassen Sie Kaufdatum, Preis, Zustand und Währung</li>
+          <li><strong>Multi-Währungsunterstützung:</strong> Verfolgen Sie Werte in 30+ Währungen (EUR, USD, GBP, CHF, JPY, etc.)</li>
+          <li><strong>Seriennummern:</strong> Speichern Sie Seriennummern und Firmware-Versionen</li>
+          <li><strong>Benutzerdefinierte Notizen:</strong> Fügen Sie persönliche Notizen zu jedem Objektiv hinzu</li>
+          <li><strong>Abdeckungsanalyse:</strong> Visuelle Brennweiten- und Blendenabdeckungsdiagramme</li>
+          <li><strong>Lückenerkennung:</strong> Identifizieren Sie fehlende Brennweiten und Blendenbereiche</li>
+          <li><strong>Garantieverfolgung:</strong> Überwachen Sie Garantieablaufdaten mit 30-Tage-Warnungen</li>
+          <li><strong>Garantiedetails:</strong> Speichern Sie Garantieinformationen und Ablaufdaten</li>
+          <li><strong>Sammlungswert:</strong> Verfolgen Sie Gesamtkaufwert und Versicherungswert nach Währung</li>
+          <li><strong>Wertaufschlüsselung:</strong> Zeigen Sie Objektive sortiert nach Wert vom teuersten zum günstigsten</li>
+          <li><strong>Versicherungsinformationen:</strong> Speichern Sie Versicherungswerte und Policennummern</li>
+          <li><strong>Verkaufte Objektiv-Verfolgung:</strong> Markieren Sie Objektive als verkauft bei Erhaltung der Aufzeichnungen</li>
+          <li><strong>Erweiterte Filterung:</strong> Filtern nach Marke, Anschluss, Typ, Wetterschutz, Stabilisierung</li>
+          <li><strong>Mehrere Sortieroptionen:</strong> Sortieren nach Marke, Bewertung, Brennweite, Blende, Gewicht, Datum</li>
+          <li><strong>CSV-Export:</strong> Exportieren Sie Ihre gesamte Sammlung zur Sicherung</li>
+          <li><strong>CSV-Import:</strong> Importieren Sie Objektive aus CSV mit Duplikaterkennung</li>
+          <li><strong>iPad-Optimiert:</strong> Split-Screen-Layouts und Rasteransichten für größere Displays</li>
+          <li><strong>Interaktives Tutorial:</strong> Integriertes Onboarding mit Wiedergabeoption</li>
+        </ul>
+
+        <div class="note">
+          <strong>Daten-Haftungsausschluss:</strong> Objektivspezifikationen stammen aus Herstellerdaten und Community-Beiträgen. Wetterschutz-Informationen sind ungefähr - überprüfen Sie immer Ihr Objektivhandbuch für Outdoor-Nutzung. Wechselkurse werden der Einfachheit halber bereitgestellt und spiegeln möglicherweise nicht die aktuellen Marktwerte wider.</div>
+
+        <div class="note">
+          <strong>Hinweis:</strong> GearGrove ist für Fotografen konzipiert, die sich auf ihr Handwerk konzentrieren möchten, nicht auf Tabellen. Schnelle Organisation, intelligente Einblicke und vollständige Privatsphäre.
+        </div>
+
+        <a href="https://apps.apple.com/app/geargrove/id6754944208" class="button">Im App Store herunterladen</a>
+      </div>
+
+      <!-- Spanish -->
+      <div class="lang lang-es hidden">
+        <h2>GearGrove - Gestor de Inventario de Objetivos Fotográficos</h2>
+        <p>Organiza toda tu colección de objetivos con facilidad. Rastrea especificaciones, brechas de cobertura, garantías y valor total. Perfecto para fotógrafos que quieren mantener su equipo organizado y tomar decisiones de compra informadas.</p>
+        
+        <div class="highlight-box">
+          <strong>🔒 Completamente Sin Conexión • Privacidad Completa</strong>
+          <p>GearGrove funciona completamente sin conexión sin requerir internet. Los datos de tu colección de objetivos permanecen 100% privados y seguros en tu dispositivo. Sin inicio de sesión, sin cuenta, sin sincronización en la nube - control completo sobre tus datos.</p>
+        </div>
+
+        <h3>¿Por Qué Elegir GearGrove?</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>📴 Funciona Sin Conexión</h4>
+            <p>No requiere internet. Gestiona tu colección en cualquier lugar sin preocupaciones de conectividad.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🔒 No Requiere Inicio de Sesión</h4>
+            <p>Tus datos permanecen en tu dispositivo. Privacidad y seguridad completas sin almacenamiento en la nube.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📷 195+ Objetivos Precargados</h4>
+            <p>Base de datos completa que cubre Canon, Nikon, Sony, Sigma, Tamron y más marcas importantes.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📊 Análisis de Cobertura</h4>
+            <p>Visualiza tu cobertura de longitud focal y apertura. Identifica brechas en tu colección.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🛡️ Seguimiento de Garantía</h4>
+            <p>Monitorea fechas de vencimiento de garantía con alertas para objetivos que expiran en 30 días.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💰 Valor de Colección</h4>
+            <p>Rastrea el valor total de inversión con soporte multi-moneda e información de seguro.</p>
+          </div>
+          <div class="feature-card">
+            <h4>⭐ Sistema de Calificación</h4>
+            <p>Califica tus objetivos con un sistema de 5 estrellas y rastrea tus favoritos.</p>
+          </div>
+          <div class="feature-card">
+            <h4>💾 Exportar/Importar CSV</h4>
+            <p>Respalda y restaura tu colección con soporte de archivos CSV.</p>
+          </div>
+          <div class="feature-card">
+            <h4>📱 Optimizado para iPad</h4>
+            <p>Diseños hermosos específicamente para iPad con vistas de pantalla dividida.</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌐 Multilingüe</h4>
+            <p>Soporte completo para interfaces en inglés, español y alemán.</p>
+          </div>
+        </div>
+
+        <h3>Perfecto Para</h3>
+        <ul>
+          <li>Fotógrafos profesionales gestionando colecciones extensas de equipo</li>
+          <li>Aficionados organizando su inventario de objetivos</li>
+          <li>Revisores de equipo rastreando múltiples objetivos y sistemas</li>
+          <li>Educadores de fotografía gestionando equipo de estudio</li>
+          <li>Cualquiera que quiera optimizar su colección de objetivos</li>
+          <li>Fotógrafos planeando su próxima compra de objetivo</li>
+        </ul>
+
+        <h3>Características Principales</h3>
+        <ul>
+          <li><strong>Completamente Sin Conexión:</strong> No requiere conexión a internet - privacidad completa</li>
+          <li><strong>No Requiere Inicio de Sesión:</strong> Todos los datos almacenados localmente en tu dispositivo</li>
+          <li><strong>Base de Datos Completa de Objetivos:</strong> 195+ objetivos precargados de marcas importantes</li>
+          <li><strong>Agregar Rápido desde Base de Datos:</strong> Navega y agrega objetivos por marca y montura</li>
+          <li><strong>Especificaciones Detalladas:</strong> Rastrea longitud focal, apertura, diámetro de filtro, peso, dimensiones</li>
+          <li><strong>Info de Sellado contra Clima:</strong> Sabe qué objetivos están sellados contra clima para fotografía exterior</li>
+          <li><strong>Estabilización de Imagen:</strong> Rastrea qué objetivos tienen estabilización incorporada</li>
+          <li><strong>Compatibilidad de Montura:</strong> Rastrea monturas de objetivos y compatibilidad de adaptadores</li>
+          <li><strong>Sistema de Calificación:</strong> Califica objetivos de 1-5 estrellas para rastrear tus favoritos</li>
+          <li><strong>Seguimiento de Caso de Uso:</strong> Asigna casos de uso primarios y secundarios (Retrato, Paisaje, Vida Silvestre, etc.)</li>
+          <li><strong>Contador de Uso:</strong> Rastrea cuántas veces has usado cada objetivo</li>
+          <li><strong>Información de Compra:</strong> Registra fecha de compra, precio, condición y moneda</li>
+          <li><strong>Soporte Multi-Moneda:</strong> Rastrea valores en 30+ monedas (EUR, USD, GBP, CHF, JPY, etc.)</li>
+          <li><strong>Números de Serie:</strong> Almacena números de serie y versiones de firmware</li>
+          <li><strong>Notas Personalizadas:</strong> Agrega notas personales sobre cada objetivo</li>
+          <li><strong>Análisis de Cobertura:</strong> Gráficos visuales de cobertura de longitud focal y apertura</li>
+          <li><strong>Detección de Brechas:</strong> Identifica longitudes focales y rangos de apertura faltantes</li>
+          <li><strong>Seguimiento de Garantía:</strong> Monitorea fechas de vencimiento de garantía con alertas de 30 días</li>
+          <li><strong>Detalles de Garantía:</strong> Almacena información de garantía y fechas de vencimiento</li>
+          <li><strong>Valor de Colección:</strong> Rastrea valor total de compra y valor asegurado por moneda</li>
+          <li><strong>Desglose de Valor:</strong> Ve objetivos ordenados por valor de más a menos caro</li>
+          <li><strong>Información de Seguro:</strong> Almacena valores asegurados y números de póliza</li>
+          <li><strong>Seguimiento de Objetivos Vendidos:</strong> Marca objetivos como vendidos preservando registros</li>
+          <li><strong>Filtrado Avanzado:</strong> Filtra por marca, montura, tipo, sellado contra clima, estabilización</li>
+          <li><strong>Múltiples Opciones de Ordenar:</strong> Ordena por marca, calificación, longitud focal, apertura, peso, fecha</li>
+          <li><strong>Exportar CSV:</strong> Exporta tu colección completa para respaldo</li>
+          <li><strong>Importar CSV:</strong> Importa objetivos desde CSV con detección de duplicados</li>
+          <li><strong>Optimizado para iPad:</strong> Diseños de pantalla dividida y vistas en cuadrícula para pantallas más grandes</li>
+          <li><strong>Tutorial Interactivo:</strong> Incorporación integrada con opción de repetición</li>
+        </ul>
+
+        <div class="note">
+          <strong>Aviso de Datos:</strong> Las especificaciones de objetivos provienen de datos del fabricante y contribuciones de la comunidad. La información de sellado contra clima es aproximada - siempre verifica con tu manual del objetivo para uso exterior. Los tipos de cambio se proporcionan por conveniencia y pueden no reflejar valores actuales del mercado.
+        </div>
+
+        <div class="note">
+          <strong>Nota:</strong> GearGrove está diseñado para fotógrafos que quieren concentrarse en su oficio, no en hojas de cálculo. Organización rápida, información inteligente y privacidad completa.
+        </div>
+
+        <a href="https://apps.apple.com/app/geargrove/id6754944208" class="button">Descargar en el App Store</a>
+      </div>
+    </div>
+
+    <!-- SUPPORT SECTION -->
+    <div id="support" class="section hidden">
+
+      <!-- English Support -->
+      <div class="lang lang-en">
+        <h2>Support & Help</h2>
+        <p>Need help with GearGrove? We're here to assist you.</p>
+        
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+        <p>We typically respond within 24-48 hours.</p>
+        
+        <h3>Frequently Asked Questions</h3>
+        
+        <div class="faq-item">
+          <strong>How do I add a lens to my collection?</strong>
+          <p>Tap the "+" button in the main view. You can either browse the database of 195+ pre-loaded lenses (tap "Browse Common Lenses"), or manually enter all lens details. When browsing, filter by brand and mount to quickly find your lens.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I browse the lens database?</strong>
+          <p>When adding a lens, tap "Browse Common Lenses". Use the brand and mount filters at the top to narrow down results. The database includes 195+ lenses from Canon, Nikon, Sony, Sigma, Tamron, and other major brands. Tap any lens to auto-fill its specifications.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I edit a lens?</strong>
+          <p>Tap on any lens in your collection to view its details, then tap the edit button (pencil icon) in the top right. You can modify any information including specifications, purchase details, ratings, and notes.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I delete a lens?</strong>
+          <p>In the main list view, swipe left on any lens and tap "Delete". You'll be asked to confirm the deletion. Alternatively, you can mark a lens as "Sold" to keep its records while removing it from active inventory.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>What's the difference between marking a lens as sold vs. deleting it?</strong>
+          <p>Marking a lens as "Sold" keeps all its data and history but removes it from your active collection counts and value calculations. Deleting permanently removes the lens and all its data. We recommend marking as sold to maintain your collection history.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I rate my lenses?</strong>
+          <p>When adding or editing a lens, scroll to the "Purpose & Rating" section. Tap the stars to rate from 1-5, or tap a filled star to remove the rating. You can also sort your collection by rating to see your favorites first.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>What are use cases and how do I assign them?</strong>
+          <p>Use cases help you categorize how you use each lens (Portrait, Landscape, Wildlife, Sports, etc.). Assign a primary use case and optionally add secondary use cases when adding or editing a lens. This helps you understand your collection's coverage for different photography styles.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I track lens usage?</strong>
+          <p>Each lens has a "Times Used" counter. When editing a lens, update this number to track how frequently you use it. This helps identify which lenses get the most use and which might be underutilized.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How does the coverage analysis work?</strong>
+          <p>Tap the chart icon in the toolbar to view your collection's coverage. The analysis shows: 1) Focal length coverage across your collection, 2) Aperture range visualization, 3) Focal length vs aperture scatter plot, and 4) Gap analysis identifying missing focal lengths or aperture ranges.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>What are the coverage gaps telling me?</strong>
+          <p>Gap analysis identifies areas where your collection might be lacking. It checks for: ultra-wide coverage (8-24mm), telephoto reach (beyond your longest lens), fast apertures (f/1.4-f/2), weather-sealed lenses, and specific focal length gaps. These suggestions help you plan future purchases.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I track warranties?</strong>
+          <p>When adding or editing a lens, scroll to "Insurance (Optional)" and tap "Add Warranty Expiry Date". Enter the warranty end date and optionally add warranty details. Lenses expiring within 30 days will trigger alerts on the main screen. Tap the shield icon in the toolbar to view all warranty information.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I view my collection's total value?</strong>
+          <p>Tap the dollar sign icon ($) in the toolbar to view the Gear Value screen. This shows total purchase value and insured value by currency, plus a sortable list of all lenses from most to least expensive with purchase dates.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Can I track lenses in different currencies?</strong>
+          <p>Yes! GearGrove supports 30+ currencies including EUR, USD, GBP, CHF, JPY, and more. Each lens can have its own currency for purchase price and insured value. The Gear Value view automatically groups and displays totals by currency.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I add insurance information?</strong>
+          <p>When adding or editing a lens, scroll to "Insurance (Optional)". Enter the insured value (uses the same currency as purchase price), policy number, and optionally warranty expiry date with details. This information appears in the lens detail view and Gear Value summary.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I export my collection?</strong>
+          <p>Go to the Import/Export screen (tap the up arrow icon in the toolbar). Tap "Export to CSV" to create a backup file of your entire collection. This includes all specifications, ratings, purchase info, warranty data, and notes. You can share the CSV file via email, Files app, or other services.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I import lenses from CSV?</strong>
+          <p>Go to Import/Export and tap "Import from CSV". Select your CSV file. The importer automatically detects duplicates by serial number or brand+model combination and skips them. After import, you'll see a summary of total records, successfully imported, and skipped duplicates.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>What CSV format does GearGrove use?</strong>
+          <p>Tap the "ℹ️ CSV Import Requirements" button in the About screen to see detailed format requirements. Required fields include Brand, Model, Mount, Type, Focal Length Min/Max, and Aperture Min/Max. Optional fields include all other specifications, purchase details, ratings, and notes. The columns can be in any order as long as the headers match.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I filter and sort my collection?</strong>
+          <p>Use the filter bar at the bottom of the main screen (iPhone) or left sidebar (iPad). You can: 1) Sort by brand, rating, focal length, aperture, weight, purchase date, or release year, 2) Filter by lens type (Prime/Zoom), brand, mount, 3) Show only weather-sealed or stabilized lenses, 4) Include/exclude sold lenses.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>What information can I track for each lens?</strong>
+          <p>GearGrove tracks: brand, model, mount, compatibility, focal length range, aperture range, filter diameter, weight, dimensions, lens hood model, stabilization, weather sealing, focus type, serial number, firmware version, release year, purchase date, condition, price, currency, rating, use cases, usage count, notes, sold status, insured value, insurance policy number, warranty expiry date, and warranty details.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Is my data stored in the cloud?</strong>
+          <p>No. All your data is stored locally on your device. GearGrove doesn't sync to any cloud service, which means your lens collection data stays completely private and secure on your device. You control your data through manual CSV exports.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>How do I see the onboarding tutorial again?</strong>
+          <p>Go to the About screen (info icon) and tap "Replay Tutorial". This will show you the complete onboarding sequence again, perfect if you need a refresher on features.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Is GearGrove optimized for iPad?</strong>
+          <p>Yes! GearGrove includes iPad-specific layouts with: split-screen views showing filters on the left and lens grid on the right, two-column forms for easier data entry, larger lens cards in grid layouts, and optimized coverage charts for bigger screens.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Can I change the app language?</strong>
+          <p>GearGrove automatically uses your device's language setting. Supported languages include English, Spanish (Español), and German (Deutsch). Change your device language in iOS Settings to switch the app language.</p>
+        </div>
+        
+        <h3>Tips & Best Practices</h3>
+        <ul>
+          <li>Use the Browse database feature to quickly add lenses with accurate specifications</li>
+          <li>Add serial numbers to help with insurance claims and theft recovery</li>
+          <li>Rate your lenses to identify favorites and underused gear</li>
+          <li>Set up warranty tracking immediately after purchase</li>
+          <li>Use the coverage analysis before planning new purchases</li>
+          <li>Track usage count to understand which lenses are most valuable to you</li>
+          <li>Add detailed notes about lens quirks, favorites settings, or common uses</li>
+          <li>Export your collection regularly as a backup</li>
+          <li>Mark lenses as sold rather than deleting to maintain history</li>
+          <li>Use the Gear Value view for insurance documentation</li>
+          <li>Filter by weather sealing when planning outdoor shoots</li>
+        </ul>
+        
+        <h3>System Requirements</h3>
+        <ul>
+          <li>iOS 15.0 or later</li>
+          <li>iPhone or iPad</li>
+          <li>Compatible with iPhone, iPad, and iPod touch</li>
+          <li>No internet connection required</li>
+        </ul>
+      </div>
+
+      <!-- German Support -->
+      <div class="lang lang-de hidden">
+        <h2>Support & Hilfe</h2>
+        <p>Benötigen Sie Hilfe mit GearGrove? Wir sind für Sie da.</p>
+        
+        <h3>Kontakt</h3>
+        <p>E-Mail: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+        <p>Wir antworten normalerweise innerhalb von 24-48 Stunden.</p>
+        
+        <h3>Häufig Gestellte Fragen</h3>
+        
+        <div class="faq-item">
+          <strong>Wie füge ich ein Objektiv zu meiner Sammlung hinzu?</strong>
+          <p>Tippen Sie auf die "+"-Schaltfläche in der Hauptansicht. Sie können entweder die Datenbank mit 195+ vorgeladenen Objektiven durchsuchen (tippen Sie auf "Gängige Objektive durchsuchen") oder alle Objektivdetails manuell eingeben. Beim Durchsuchen filtern Sie nach Marke und Anschluss, um Ihr Objektiv schnell zu finden.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie durchsuche ich die Objektivdatenbank?</strong>
+          <p>Tippen Sie beim Hinzufügen eines Objektivs auf "Gängige Objektive durchsuchen". Verwenden Sie die Marken- und Anschlussfilter oben, um die Ergebnisse einzugrenzen. Die Datenbank enthält 195+ Objektive von Canon, Nikon, Sony, Sigma, Tamron und anderen großen Marken. Tippen Sie auf ein beliebiges Objektiv, um seine Spezifikationen automatisch auszufüllen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie bearbeite ich ein Objektiv?</strong>
+          <p>Tippen Sie auf ein beliebiges Objektiv in Ihrer Sammlung, um seine Details anzuzeigen, und tippen Sie dann auf die Bearbeitungsschaltfläche (Bleistiftsymbol) oben rechts. Sie können alle Informationen einschließlich Spezifikationen, Kaufdetails, Bewertungen und Notizen ändern.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie lösche ich ein Objektiv?</strong>
+          <p>Wischen Sie in der Hauptlistenansicht bei einem beliebigen Objektiv nach links und tippen Sie auf "Löschen". Sie werden gebeten, das Löschen zu bestätigen. Alternativ können Sie ein Objektiv als "Verkauft" markieren, um seine Aufzeichnungen zu behalten und es gleichzeitig aus dem aktiven Inventar zu entfernen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Was ist der Unterschied zwischen einem Objektiv als verkauft markieren und löschen?</strong>
+          <p>Das Markieren eines Objektivs als "Verkauft" behält alle seine Daten und Historie, entfernt es jedoch aus Ihren aktiven Sammlungszählungen und Wertberechnungen. Löschen entfernt das Objektiv und alle seine Daten dauerhaft. Wir empfehlen, als verkauft zu markieren, um Ihre Sammlungshistorie zu erhalten.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie bewerte ich meine Objektive?</strong>
+          <p>Scrollen Sie beim Hinzufügen oder Bearbeiten eines Objektivs zum Abschnitt "Zweck & Bewertung". Tippen Sie auf die Sterne, um von 1-5 zu bewerten, oder tippen Sie auf einen gefüllten Stern, um die Bewertung zu entfernen. Sie können Ihre Sammlung auch nach Bewertung sortieren, um Ihre Favoriten zuerst zu sehen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Was sind Anwendungsfälle und wie weise ich sie zu?</strong>
+          <p>Anwendungsfälle helfen Ihnen zu kategorisieren, wie Sie jedes Objektiv verwenden (Porträt, Landschaft, Wildlife, Sport, etc.). Weisen Sie einen primären Anwendungsfall zu und fügen Sie optional sekundäre Anwendungsfälle beim Hinzufügen oder Bearbeiten eines Objektivs hinzu. Dies hilft Ihnen, die Abdeckung Ihrer Sammlung für verschiedene Fotografiestile zu verstehen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie verfolge ich die Objektivverwendung?</strong>
+          <p>Jedes Objektiv hat einen "Verwendungszähler". Aktualisieren Sie beim Bearbeiten eines Objektivs diese Zahl, um zu verfolgen, wie häufig Sie es verwenden. Dies hilft zu identifizieren, welche Objektive am meisten genutzt werden und welche möglicherweise unterausgelastet sind.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie funktioniert die Abdeckungsanalyse?</strong>
+          <p>Tippen Sie auf das Diagrammsymbol in der Symbolleiste, um die Abdeckung Ihrer Sammlung anzuzeigen. Die Analyse zeigt: 1) Brennweitenabdeckung über Ihre Sammlung hinweg, 2) Blendenbereich-Visualisierung, 3) Brennweite vs. Blenden-Streudiagramm und 4) Lückenanalyse zur Identifizierung fehlender Brennweiten oder Blendenbereiche.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Was sagen mir die Abdeckungslücken?</strong>
+          <p>Die Lückenanalyse identifiziert Bereiche, in denen Ihre Sammlung möglicherweise fehlt. Sie prüft auf: Ultra-Weitwinkelabdeckung (8-24mm), Tele-Reichweite (über Ihr längstes Objektiv hinaus), lichtstarke Blenden (f/1.4-f/2), wetterfeste Objektive und spezifische Brennweitenlücken. Diese Vorschläge helfen Ihnen bei der Planung zukünftiger Käufe.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie verfolge ich Garantien?</strong>
+          <p>Scrollen Sie beim Hinzufügen oder Bearbeiten eines Objektivs zu "Versicherung (Optional)" und tippen Sie auf "Garantieablaufdatum hinzufügen". Geben Sie das Garantieenddatum ein und fügen Sie optional Garantiedetails hinzu. Objektive, die innerhalb von 30 Tagen ablaufen, lösen Warnungen auf dem Hauptbildschirm aus. Tippen Sie auf das Schildsymbol in der Symbolleiste, um alle Garantieinformationen anzuzeigen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie sehe ich den Gesamtwert meiner Sammlung?</strong>
+          <p>Tippen Sie auf das Dollarzeichen-Symbol ($) in der Symbolleiste, um den Ausrüstungswert-Bildschirm anzuzeigen. Dies zeigt den gesamten Kaufwert und Versicherungswert nach Währung sowie eine sortierbare Liste aller Objektive vom teuersten zum günstigsten mit Kaufdaten.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Kann ich Objektive in verschiedenen Währungen verfolgen?</strong>
+          <p>Ja! GearGrove unterstützt 30+ Währungen einschließlich EUR, USD, GBP, CHF, JPY und mehr. Jedes Objektiv kann seine eigene Währung für Kaufpreis und Versicherungswert haben. Die Ausrüstungswert-Ansicht gruppiert und zeigt automatisch Gesamtsummen nach Währung an.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie füge ich Versicherungsinformationen hinzu?</strong>
+          <p>Scrollen Sie beim Hinzufügen oder Bearbeiten eines Objektivs zu "Versicherung (Optional)". Geben Sie den Versicherungswert ein (verwendet dieselbe Währung wie der Kaufpreis), die Policennummer und optional das Garantieablaufdatum mit Details. Diese Informationen erscheinen in der Objektivdetailansicht und der Ausrüstungswert-Zusammenfassung.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie exportiere ich meine Sammlung?</strong>
+          <p>Gehen Sie zum Import/Export-Bildschirm (tippen Sie auf das Pfeil-nach-oben-Symbol in der Symbolleiste). Tippen Sie auf "Als CSV exportieren", um eine Sicherungsdatei Ihrer gesamten Sammlung zu erstellen. Dies umfasst alle Spezifikationen, Bewertungen, Kaufinformationen, Garantiedaten und Notizen. Sie können die CSV-Datei per E-Mail, Dateien-App oder andere Dienste teilen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie importiere ich Objektive aus CSV?</strong>
+          <p>Gehen Sie zu Import/Export und tippen Sie auf "Aus CSV importieren". Wählen Sie Ihre CSV-Datei aus. Der Importer erkennt automatisch Duplikate anhand der Seriennummer oder Marke+Modell-Kombination und überspringt sie. Nach dem Import sehen Sie eine Zusammenfassung der Gesamtdatensätze, erfolgreich importiert und übersprungene Duplikate.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Welches CSV-Format verwendet GearGrove?</strong>
+          <p>Tippen Sie auf die Schaltfläche "ℹ️ CSV-Importanforderungen" im Info-Bildschirm, um detaillierte Formatanforderungen zu sehen. Erforderliche Felder umfassen Marke, Modell, Anschluss, Typ, Brennweite Min/Max und Blende Min/Max. Optionale Felder umfassen alle anderen Spezifikationen, Kaufdetails, Bewertungen und Notizen. Die Spalten können in beliebiger Reihenfolge sein, solange die Überschriften übereinstimmen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie filtere und sortiere ich meine Sammlung?</strong>
+          <p>Verwenden Sie die Filterleiste am unteren Rand des Hauptbildschirms (iPhone) oder in der linken Seitenleiste (iPad). Sie können: 1) Nach Marke, Bewertung, Brennweite, Blende, Gewicht, Kaufdatum oder Erscheinungsjahr sortieren, 2) Nach Objektivtyp (Prime/Zoom), Marke, Anschluss filtern, 3) Nur wetterfeste oder stabilisierte Objektive anzeigen, 4) Verkaufte Objektive ein-/ausschließen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Welche Informationen kann ich für jedes Objektiv verfolgen?</strong>
+          <p>GearGrove verfolgt: Marke, Modell, Anschluss, Kompatibilität, Brennweitenbereich, Blendenbereich, Filterdurchmesser, Gewicht, Abmessungen, Gegenlichtblende-Modell, Stabilisierung, Wetterschutz, Fokustyp, Seriennummer, Firmware-Version, Erscheinungsjahr, Kaufdatum, Zustand, Preis, Währung, Bewertung, Anwendungsfälle, Verwendungszähler, Notizen, Verkaufsstatus, Versicherungswert, Versicherungspolicennummer, Garantieablaufdatum und Garantiedetails.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Werden meine Daten in der Cloud gespeichert?</strong>
+          <p>Nein. Alle Ihre Daten werden lokal auf Ihrem Gerät gespeichert. GearGrove synchronisiert sich nicht mit einem Cloud-Dienst, was bedeutet, dass Ihre Objektivsammlungsdaten vollständig privat und sicher auf Ihrem Gerät bleiben. Sie kontrollieren Ihre Daten durch manuelle CSV-Exporte.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Wie sehe ich das Onboarding-Tutorial erneut?</strong>
+          <p>Gehen Sie zum Info-Bildschirm (Info-Symbol) und tippen Sie auf "Tutorial wiedergeben". Dies zeigt Ihnen die vollständige Onboarding-Sequenz erneut, perfekt, wenn Sie eine Auffrischung der Funktionen benötigen.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Ist GearGrove für iPad optimiert?</strong>
+          <p>Ja! GearGrove enthält iPad-spezifische Layouts mit: Split-Screen-Ansichten mit Filtern links und Objektiv-Raster rechts, zweispaltigen Formularen für einfachere Dateneingabe, größeren Objektivkarten in Rasterlayouts und optimierten Abdeckungsdiagrammen für größere Bildschirme.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>Kann ich die App-Sprache ändern?</strong>
+          <p>GearGrove verwendet automatisch die Spracheinstellung Ihres Geräts. Unterstützte Sprachen sind Englisch, Spanisch (Español) und Deutsch (Deutsch). Ändern Sie Ihre Gerätesprache in den iOS-Einstellungen, um die App-Sprache zu wechseln.</p>
+        </div>
+        
+        <h3>Tipps & Best Practices</h3>
+        <ul>
+          <li>Verwenden Sie die Durchsuchen-Datenbankfunktion, um Objektive schnell mit genauen Spezifikationen hinzuzufügen</li>
+          <li>Fügen Sie Seriennummern hinzu, um bei Versicherungsansprüchen und Diebstahlwiederherstellung zu helfen</li>
+          <li>Bewerten Sie Ihre Objektive, um Favoriten und wenig genutzte Ausrüstung zu identifizieren</li>
+          <li>Richten Sie die Garantieverfolgung sofort nach dem Kauf ein</li>
+          <li>Verwenden Sie die Abdeckungsanalyse vor der Planung neuer Käufe</li>
+          <li>Verfolgen Sie den Verwendungszähler, um zu verstehen, welche Objektive für Sie am wertvollsten sind</li>
+          <li>Fügen Sie detaillierte Notizen über Objektiv-Eigenheiten, Lieblingseinstellungen oder häufige Verwendungen hinzu</li>
+          <li>Exportieren Sie Ihre Sammlung regelmäßig als Sicherung</li>
+          <li>Markieren Sie Objektive als verkauft, anstatt sie zu löschen, um die Historie zu erhalten</li>
+          <li>Verwenden Sie die Ausrüstungswert-Ansicht für Versicherungsdokumentation</li>
+          <li>Filtern Sie nach Wetterschutz bei der Planung von Outdoor-Aufnahmen</li>
+        </ul>
+        
+        <h3>Systemanforderungen</h3>
+        <ul>
+          <li>iOS 15.0 oder neuer</li>
+          <li>iPhone oder iPad</li>
+          <li>Kompatibel mit iPhone, iPad und iPod touch</li>
+          <li>Keine Internetverbindung erforderlich</li>
+        </ul>
+      </div>
+
+      <!-- Spanish Support -->
+      <div class="lang lang-es hidden">
+        <h2>Soporte y Ayuda</h2>
+        <p>¿Necesitas ayuda con GearGrove? Estamos aquí para asistirte.</p>
+        
+        <h3>Contacto</h3>
+        <p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+        <p>Normalmente respondemos en 24-48 horas.</p>
+        
+        <h3>Preguntas Frecuentes</h3>
+        
+        <div class="faq-item">
+          <strong>¿Cómo agrego un objetivo a mi colección?</strong>
+          <p>Toca el botón "+" en la vista principal. Puedes navegar la base de datos de 195+ objetivos precargados (toca "Explorar Objetivos Comunes"), o ingresar manualmente todos los detalles del objetivo. Al navegar, filtra por marca y montura para encontrar rápidamente tu objetivo.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>¿Cómo navego la base de datos de objetivos?</strong>
+          <p>Al agregar un objetivo, toca "Explorar Objetivos Comunes". Usa los filtros de marca y montura en la parte superior para reducir los resultados. La base de datos incluye 195+ objetivos de Canon, Nikon, Sony, Sigma, Tamron y otras marcas importantes. Toca cualquier objetivo para autocompletar sus especificaciones.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>¿Cómo edito un objetivo?</strong>
+          <p>Toca cualquier objetivo en tu colección para ver sus detalles, luego toca el botón de editar (ícono de lápiz) en la parte superior derecha. Puedes modificar cualquier información incluyendo especificaciones, detalles de compra, calificaciones y notas.</p>
+        </div>
+        
+        <div class="faq-item">
+          <strong>¿Cómo elimino un objetivo?</strong>
+          <p>En la vista de lista principal, desliza hacia la izquierda en cualquier objetivo y toca "Eliminar". Se
+        </div>
+          <footer>
+            <p>&copy; 2025 GearGrove. Made with ❤️ for photographers by Andres Wetzel.</p>
+            <p><a href="#home" onclick="showSection('home')">Home</a> | <a href="#support" onclick="showSection('support')">Support</a> | <a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a></p>
+          </footer>
+        </body>
+        </html>
