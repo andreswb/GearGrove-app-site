@@ -40,26 +40,22 @@
     document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('hidden'));
     document.getElementById('lang-selector').value = lang;
   }
-
   function showSection(section) {
     document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
     const target = document.getElementById(section);
     if (target) target.classList.remove('hidden');
   }
-
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
   }
-
   window.onload = function() {
     const hash = window.location.hash.substring(1);
     const lang = getQueryParam('lang');
-
     if (hash === 'privacy') showSection('privacy');
     else if (hash === 'support') showSection('support');
     else showSection('home');
-    
+
     switchLanguage(lang === 'de' || lang === 'es' ? lang : 'en');
   }
 </script>
@@ -84,532 +80,568 @@
 </div>
 </header>
 <div class="container">
-<!-- HOME SECTION -->
+
+<!-- ==================== HOME SECTION ==================== -->
 <div class="section" id="home">
-<!-- English -->
-<div class="lang lang-en">
-<h2>GearGrove - Photography Lens Inventory Manager</h2>
-<p>Organize your entire lens collection with ease. Track specifications, coverage gaps, warranties, and total value. Perfect for photographers who want to keep their gear organized and make informed purchasing decisions.</p>
 
-<div class="highlight-box">
-<strong>🔒 Fully Offline • Complete Privacy</strong>
-<p>GearGrove works completely offline with no internet connection required. Your lens collection data stays 100% private and secure on your device. No login, no account, no cloud sync - complete control over your data.</p>
+  <!-- English Home -->
+  <div class="lang lang-en">
+    <h2>GearGrove - Photography Lens Inventory Manager</h2>
+    <p>Organize your entire lens collection with ease. Track specifications, coverage gaps, warranties, lending, condition details, and total value. Perfect for photographers who want to keep their gear organized and make informed purchasing decisions.</p>
+    <div class="highlight-box">
+      <strong>🔒 Fully Offline • Complete Privacy</strong>
+      <p>GearGrove works completely offline with no internet connection required. Your lens collection data stays 100% private and secure on your device. No login, no account, no cloud sync — complete control over your data.</p>
+    </div>
+    <h3>Free vs Pro Features</h3>
+    <p>GearGrove offers a generous free tier with full lens management capabilities. Upgrade to <strong>GearGrove Pro</strong> (one-time purchase) to unlock advanced analytics, tracking, and data management features.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>✅ FREE FEATURES</h4>
+        <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+          <li>Unlimited lens inventory</li>
+          <li>320+ pre-loaded lenses database</li>
+          <li>Complete specifications tracking</li>
+          <li>5-star rating system</li>
+          <li>Usage tracking</li>
+          <li>Search and filtering</li>
+          <li>Weather sealing information</li>
+          <li>Works completely offline</li>
+          <li>No login required</li>
+        </ul>
+      </div>
+      <div class="feature-card" style="border: 2px solid #f59e0b;">
+        <h4>👑 PRO FEATURES <span class="pro-badge">PRO</span></h4>
+        <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+          <li><strong>CSV Export/Import</strong> — Backup &amp; restore</li>
+          <li><strong>Warranty Tracking</strong> — Expiration alerts</li>
+          <li><strong>Gear Value Analysis</strong> — Investment tracking</li>
+          <li><strong>Coverage Charts</strong> — Visual gap analysis</li>
+          <li><strong>Lending Tracker</strong> — Know who has your lenses</li>
+          <li><strong>Condition Details</strong> — Track fungus &amp; packaging</li>
+          <li><strong>Wishlist</strong> — Plan future purchases</li>
+          <li><strong>Gear Kits</strong> — Group lenses per shooting scenario</li>
+        </ul>
+        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>One-time purchase • Lifetime access</strong></p>
+      </div>
+    </div>
+    <h3>Why Choose GearGrove?</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>🔴 Works Offline</h4>
+        <p>No internet required. Manage your collection anywhere without connectivity concerns.</p>
+      </div>
+      <div class="feature-card">
+        <h4>🔒 No Login Required</h4>
+        <p>Your data stays on your device. Complete privacy and security with no cloud storage.</p>
+      </div>
+      <div class="feature-card">
+        <h4>📷 320+ Pre-loaded Lenses</h4>
+        <p>Comprehensive database covering Canon, Nikon, Sony, Sigma, Tamron, and more major brands.</p>
+      </div>
+      <div class="feature-card">
+        <h4>⭐ Rating System</h4>
+        <p>Rate your lenses with a 5-star system and track your favorites.</p>
+      </div>
+      <div class="feature-card">
+        <h4>🎒 Gear Kits</h4>
+        <p>Group lenses into named kits for weddings, travel, astro shoots, and more.</p>
+      </div>
+      <div class="feature-card">
+        <h4>💎 Fair Pricing</h4>
+        <p>One-time purchase for Pro features. No subscription, no recurring fees.</p>
+      </div>
+    </div>
+    <a class="button" href="https://apps.apple.com/app/geargrove/id6754944208">Download on the App Store</a>
+  </div>
+
+  <!-- German Home -->
+  <div class="lang lang-de hidden">
+    <h2>GearGrove – Verwaltung für Kameraobjektiv-Inventar</h2>
+    <p>Organisieren Sie Ihre gesamte Objektivsammlung mühelos. Verfolgen Sie Spezifikationen, Abdeckungslücken, Garantien, Verleih, Zustandsdetails und Gesamtwert. Ideal für Fotografen, die ihre Ausrüstung strukturiert verwalten und fundierte Kaufentscheidungen treffen möchten.</p>
+    <div class="highlight-box">
+      <strong>🔒 Vollständig Offline • Maximale Privatsphäre</strong>
+      <p>GearGrove funktioniert vollständig offline, ohne Internetverbindung. Ihre Objektivdaten bleiben zu 100 % privat und sicher auf Ihrem Gerät. Keine Anmeldung, kein Konto, keine Cloud-Synchronisierung – Sie behalten die volle Kontrolle über Ihre Daten.</p>
+    </div>
+    <h3>Kostenlose vs. Pro-Funktionen</h3>
+    <p>GearGrove bietet eine großzügige kostenlose Version mit vollständiger Objektivverwaltung. Upgraden Sie auf <strong>GearGrove Pro</strong> (einmaliger Kauf) für erweiterte Analyse-, Verfolgungs- und Datenverwaltungsfunktionen.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>✅ KOSTENLOSE FUNKTIONEN</h4>
+        <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+          <li>Unbegrenzte Objektivanzahl</li>
+          <li>320+ vorgeladene Objektive</li>
+          <li>Vollständige Spezifikationsverfolgung</li>
+          <li>5-Sterne-Bewertungssystem</li>
+          <li>Nutzungsverfolgung</li>
+          <li>Suche und Filterung</li>
+          <li>Wetterschutzinformationen</li>
+          <li>Funktioniert vollständig offline</li>
+          <li>Keine Anmeldung erforderlich</li>
+        </ul>
+      </div>
+      <div class="feature-card" style="border: 2px solid #f59e0b;">
+        <h4>👑 PRO-FUNKTIONEN <span class="pro-badge">PRO</span></h4>
+        <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+          <li><strong>CSV-Export/Import</strong> — Sicherung &amp; Wiederherstellung</li>
+          <li><strong>Garantieverfolgung</strong> — Ablaufwarnungen</li>
+          <li><strong>Wertanalyse</strong> — Investitionsverfolgung</li>
+          <li><strong>Abdeckungsdiagramme</strong> — Visuelle Lückenanalyse</li>
+          <li><strong>Verleih-Tracker</strong> — Immer wissen, wer Ihr Objektiv hat</li>
+          <li><strong>Zustandsdetails</strong> — Pilzbefall &amp; Originalverpackung</li>
+          <li><strong>Wunschliste</strong> — Zukünftige Käufe planen</li>
+          <li><strong>Gear-Kits</strong> — Objektive nach Aufnahmesituation gruppieren</li>
+        </ul>
+        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Einmaliger Kauf • Lebenslanger Zugriff</strong></p>
+      </div>
+    </div>
+    <h3>Warum GearGrove wählen?</h3>
+    <div class="feature-grid">
+      <div class="feature-card"><h4>🔴 Offline-Funktion</h4><p>Kein Internet erforderlich. Verwalten Sie Ihre Sammlung überall.</p></div>
+      <div class="feature-card"><h4>🔒 Keine Anmeldung erforderlich</h4><p>Ihre Daten bleiben auf Ihrem Gerät – vollständige Privatsphäre.</p></div>
+      <div class="feature-card"><h4>📷 Über 320 vorgeladene Objektive</h4><p>Umfassende Datenbank für Canon, Nikon, Sony, Sigma, Tamron und mehr.</p></div>
+      <div class="feature-card"><h4>⭐ Bewertungssystem</h4><p>Bewerten Sie Ihre Objektive mit einem 5-Sterne-System.</p></div>
+      <div class="feature-card"><h4>🎒 Gear-Kits</h4><p>Gruppieren Sie Objektive in benannte Kits für jede Aufnahmesituation.</p></div>
+      <div class="feature-card"><h4>💎 Faire Preise</h4><p>Einmaliger Kauf für Pro-Funktionen. Kein Abonnement.</p></div>
+    </div>
+    <a class="button" href="https://apps.apple.com/app/geargrove/id6754944208">Im App Store herunterladen</a>
+  </div>
+
+  <!-- Spanish Home -->
+  <div class="lang lang-es hidden">
+    <h2>GearGrove – Gestor de Inventario de Objetivos Fotográficos</h2>
+    <p>Organiza toda tu colección de objetivos fácilmente. Supervisa especificaciones, brechas de cobertura, garantías, préstamos, detalles de estado y valor total. Ideal para fotógrafos que desean mantener su equipo ordenado y tomar decisiones de compra fundamentadas.</p>
+    <div class="highlight-box">
+      <strong>🔒 Totalmente sin conexión • Privacidad completa</strong>
+      <p>GearGrove funciona completamente sin conexión, sin necesidad de Internet. Los datos de tu colección permanecen 100 % privados y seguros en tu dispositivo. Sin inicio de sesión, sin cuenta, sin sincronización en la nube: control total sobre tus datos.</p>
+    </div>
+    <h3>Funciones Gratuitas vs Pro</h3>
+    <p>GearGrove ofrece una versión gratuita generosa con gestión completa de objetivos. Actualiza a <strong>GearGrove Pro</strong> (compra única) para desbloquear análisis avanzados, seguimiento y funciones de gestión de datos.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4>✅ FUNCIONES GRATUITAS</h4>
+        <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+          <li>Inventario ilimitado de objetivos</li>
+          <li>Base de datos con 320+ objetivos precargados</li>
+          <li>Seguimiento completo de especificaciones</li>
+          <li>Sistema de calificación de 5 estrellas</li>
+          <li>Seguimiento de uso</li>
+          <li>Búsqueda y filtrado</li>
+          <li>Información de sellado climático</li>
+          <li>Funciona completamente sin conexión</li>
+          <li>Sin necesidad de inicio de sesión</li>
+        </ul>
+      </div>
+      <div class="feature-card" style="border: 2px solid #f59e0b;">
+        <h4>👑 FUNCIONES PRO <span class="pro-badge">PRO</span></h4>
+        <ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
+          <li><strong>Exportación/Importación CSV</strong> — Respaldo y restauración</li>
+          <li><strong>Seguimiento de Garantía</strong> — Alertas de vencimiento</li>
+          <li><strong>Análisis de Valor</strong> — Seguimiento de inversión</li>
+          <li><strong>Gráficos de Cobertura</strong> — Análisis visual de brechas</li>
+          <li><strong>Registro de Préstamos</strong> — Controla quién tiene tus objetivos</li>
+          <li><strong>Detalles de Estado</strong> — Rastrea hongos y embalaje</li>
+          <li><strong>Lista de Deseos</strong> — Planifica futuras compras</li>
+          <li><strong>Kits de Equipo</strong> — Agrupa objetivos por escenario</li>
+        </ul>
+        <p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Compra única • Acceso de por vida</strong></p>
+      </div>
+    </div>
+    <h3>¿Por qué elegir GearGrove?</h3>
+    <div class="feature-grid">
+      <div class="feature-card"><h4>🔴 Funciona sin conexión</h4><p>No requiere Internet. Gestiona tu colección en cualquier lugar.</p></div>
+      <div class="feature-card"><h4>🔒 Sin necesidad de inicio de sesión</h4><p>Tus datos permanecen en tu dispositivo. Privacidad total.</p></div>
+      <div class="feature-card"><h4>📷 Más de 320 objetivos precargados</h4><p>Base de datos completa con Canon, Nikon, Sony, Sigma, Tamron y más.</p></div>
+      <div class="feature-card"><h4>⭐ Sistema de calificación</h4><p>Califica tus objetivos con un sistema de 5 estrellas.</p></div>
+      <div class="feature-card"><h4>🎒 Kits de Equipo</h4><p>Agrupa objetivos en kits para bodas, viajes, astrofotografía y más.</p></div>
+      <div class="feature-card"><h4>💎 Precio justo</h4><p>Compra única para funciones Pro. Sin suscripción.</p></div>
+    </div>
+    <a class="button" href="https://apps.apple.com/app/geargrove/id6754944208">Descargar en el App Store</a>
+  </div>
+
 </div>
 
-<h3>Free vs Pro Features</h3>
-<p>GearGrove offers a generous free tier with full lens management capabilities. Upgrade to <strong>GearGrove Pro</strong> (one-time purchase) to unlock advanced analytics and data management features.</p>
-
-<div class="feature-grid">
-<div class="feature-card">
-<h4>✅ FREE FEATURES</h4>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
-<li>Unlimited lens inventory</li>
-<li>195+ pre-loaded lenses database</li>
-<li>Complete specifications tracking</li>
-<li>5-star rating system</li>
-<li>Usage tracking</li>
-<li>Search and filtering</li>
-<li>Works completely offline</li>
-<li>No login required</li>
-</ul>
-</div>
-
-<div class="feature-card" style="border: 2px solid #f59e0b;">
-<h4>👑 PRO FEATURES <span class="pro-badge">PRO</span></h4>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
-<li><strong>CSV Export/Import</strong> - Backup & restore</li>
-<li><strong>Warranty Tracking</strong> - Expiration alerts</li>
-<li><strong>Gear Value Analysis</strong> - Investment tracking</li>
-<li><strong>Coverage Charts</strong> - Visual gap analysis</li>
-</ul>
-<p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>One-time purchase • Lifetime access</strong></p>
-</div>
-</div>
-
-<h3>Why Choose GearGrove?</h3>
-<div class="feature-grid">
-<div class="feature-card">
-<h4>🔴 Works Offline</h4>
-<p>No internet required. Manage your collection anywhere without connectivity concerns.</p>
-</div>
-<div class="feature-card">
-<h4>🔒 No Login Required</h4>
-<p>Your data stays on your device. Complete privacy and security with no cloud storage.</p>
-</div>
-<div class="feature-card">
-<h4>📷 195+ Pre-loaded Lenses</h4>
-<p>Comprehensive database covering Canon, Nikon, Sony, Sigma, Tamron, and more major brands.</p>
-</div>
-<div class="feature-card">
-<h4>⭐ Rating System</h4>
-<p>Rate your lenses with a 5-star system and track your favorites.</p>
-</div>
-<div class="feature-card">
-<h4>📱 iPad Optimized</h4>
-<p>Beautiful layouts designed specifically for iPad with split-screen views.</p>
-</div>
-<div class="feature-card">
-<h4>💎 Fair Pricing</h4>
-<p>One-time purchase for Pro features. No subscription, no recurring fees.</p>
-</div>
-</div>
-
-<a class="button" href="https://apps.apple.com/app/geargrove/id6754944208">Download on the App Store</a>
-</div>
-
-<!-- German -->
-<div class="lang lang-de hidden">
-<h2>GearGrove – Verwaltung für Kameraobjektiv-Inventar</h2>
-<p>Organisieren Sie Ihre gesamte Objektivsammlung mühelos. Verfolgen Sie Spezifikationen, Abdeckungslücken, Garantien und Gesamtwert. Ideal für Fotografen, die ihre Ausrüstung strukturiert verwalten und fundierte Kaufentscheidungen treffen möchten.</p>
-
-<div class="highlight-box">
-<strong>🔒 Vollständig Offline • Maximale Privatsphäre</strong>
-<p>GearGrove funktioniert vollständig offline, ohne Internetverbindung. Ihre Objektivdaten bleiben zu 100 % privat und sicher auf Ihrem Gerät. Keine Anmeldung, kein Konto, keine Cloud-Synchronisierung – Sie behalten die volle Kontrolle über Ihre Daten.</p>
-</div>
-
-<h3>Kostenlose vs. Pro-Funktionen</h3>
-<p>GearGrove bietet eine großzügige kostenlose Version mit vollständiger Objektivverwaltung. Upgraden Sie auf <strong>GearGrove Pro</strong> (einmaliger Kauf) für erweiterte Analyse- und Datenverwaltungsfunktionen.</p>
-
-<div class="feature-grid">
-<div class="feature-card">
-<h4>✅ KOSTENLOSE FUNKTIONEN</h4>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
-<li>Unbegrenzte Objektivanzahl</li>
-<li>195+ vorgeladene Objektive</li>
-<li>Vollständige Spezifikationsverfolgung</li>
-<li>5-Sterne-Bewertungssystem</li>
-<li>Nutzungsverfolgung</li>
-<li>Suche und Filterung</li>
-<li>Funktioniert vollständig offline</li>
-<li>Keine Anmeldung erforderlich</li>
-</ul>
-</div>
-
-<div class="feature-card" style="border: 2px solid #f59e0b;">
-<h4>👑 PRO-FUNKTIONEN <span class="pro-badge">PRO</span></h4>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
-<li><strong>CSV-Export/Import</strong> - Sicherung & Wiederherstellung</li>
-<li><strong>Garantieverfolgung</strong> - Ablaufwarnungen</li>
-<li><strong>Wertanalyse</strong> - Investitionsverfolgung</li>
-<li><strong>Abdeckungsdiagramme</strong> - Visuelle Lückenanalyse</li>
-</ul>
-<p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Einmaliger Kauf • Lebenslanger Zugriff</strong></p>
-</div>
-</div>
-
-<h3>Warum GearGrove wählen?</h3>
-<div class="feature-grid">
-<div class="feature-card"><h4>🔴 Offline-Funktion</h4><p>Kein Internet erforderlich. Verwalten Sie Ihre Sammlung überall.</p></div>
-<div class="feature-card"><h4>🔒 Keine Anmeldung erforderlich</h4><p>Ihre Daten bleiben auf Ihrem Gerät – vollständige Privatsphäre.</p></div>
-<div class="feature-card"><h4>📷 Über 195 Vorgeladene Objektive</h4><p>Umfassende Datenbank für Canon, Nikon, Sony, Sigma, Tamron und mehr.</p></div>
-<div class="feature-card"><h4>⭐ Bewertungssystem</h4><p>Bewerten Sie Ihre Objektive mit einem 5-Sterne-System.</p></div>
-<div class="feature-card"><h4>📱 Für iPad optimiert</h4><p>Schöne Layouts mit geteiltem Bildschirm.</p></div>
-<div class="feature-card"><h4>💎 Faire Preise</h4><p>Einmaliger Kauf für Pro-Funktionen. Kein Abonnement.</p></div>
-</div>
-
-<a class="button" href="https://apps.apple.com/app/geargrove/id6754944208">Im App Store herunterladen</a>
-</div>
-
-<!-- Spanish -->
-<div class="lang lang-es hidden">
-<h2>GearGrove – Gestor de Inventario de Objetivos Fotográficos</h2>
-<p>Organiza toda tu colección de objetivos fácilmente. Supervisa especificaciones, brechas de cobertura, garantías y valor total. Ideal para fotógrafos que desean mantener su equipo ordenado y tomar decisiones de compra fundamentadas.</p>
-
-<div class="highlight-box">
-<strong>🔒 Totalmente sin conexión • Privacidad completa</strong>
-<p>GearGrove funciona completamente sin conexión, sin necesidad de Internet. Los datos de tu colección permanecen 100 % privados y seguros en tu dispositivo. Sin inicio de sesión, sin cuenta, sin sincronización en la nube: control total sobre tus datos.</p>
-</div>
-
-<h3>Funciones Gratuitas vs Pro</h3>
-<p>GearGrove ofrece una versión gratuita generosa con gestión completa de objetivos. Actualiza a <strong>GearGrove Pro</strong> (compra única) para desbloquear análisis avanzados y funciones de gestión de datos.</p>
-
-<div class="feature-grid">
-<div class="feature-card">
-<h4>✅ FUNCIONES GRATUITAS</h4>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
-<li>Inventario ilimitado de objetivos</li>
-<li>Base de datos con 195+ objetivos</li>
-<li>Seguimiento completo de especificaciones</li>
-<li>Sistema de calificación de 5 estrellas</li>
-<li>Seguimiento de uso</li>
-<li>Búsqueda y filtrado</li>
-<li>Funciona completamente sin conexión</li>
-<li>Sin necesidad de inicio de sesión</li>
-</ul>
-</div>
-
-<div class="feature-card" style="border: 2px solid #f59e0b;">
-<h4>👑 FUNCIONES PRO <span class="pro-badge">PRO</span></h4>
-<ul style="margin: 10px 0; padding-left: 20px; line-height: 1.8;">
-<li><strong>Exportación/Importación CSV</strong> - Respaldo y restauración</li>
-<li><strong>Seguimiento de Garantía</strong> - Alertas de vencimiento</li>
-<li><strong>Análisis de Valor</strong> - Seguimiento de inversión</li>
-<li><strong>Gráficos de Cobertura</strong> - Análisis visual de brechas</li>
-</ul>
-<p style="margin-top: 15px; font-size: 0.9em; color: #666;"><strong>Compra única • Acceso de por vida</strong></p>
-</div>
-</div>
-
-<h3>¿Por qué elegir GearGrove?</h3>
-<div class="feature-grid">
-<div class="feature-card"><h4>🔴 Funciona sin conexión</h4><p>No requiere Internet. Gestiona tu colección en cualquier lugar.</p></div>
-<div class="feature-card"><h4>🔒 Sin necesidad de inicio de sesión</h4><p>Tus datos permanecen en tu dispositivo. Privacidad total.</p></div>
-<div class="feature-card"><h4>📷 Más de 195 objetivos precargados</h4><p>Base de datos completa con Canon, Nikon, Sony, Sigma, Tamron y más.</p></div>
-<div class="feature-card"><h4>⭐ Sistema de calificación</h4><p>Califica tus objetivos con un sistema de 5 estrellas.</p></div>
-<div class="feature-card"><h4>📱 Optimizado para iPad</h4><p>Diseños hermosos con vistas de pantalla dividida.</p></div>
-<div class="feature-card"><h4>💎 Precio justo</h4><p>Compra única para funciones Pro. Sin suscripción.</p></div>
-</div>
-
-<a class="button" href="https://apps.apple.com/app/geargrove/id6754944208">Descargar en el App Store</a>
-</div>
-</div>
-
-<!-- SUPPORT SECTION -->
+<!-- ==================== SUPPORT SECTION ==================== -->
 <div class="section hidden" id="support">
-<!-- English Support -->
-<div class="lang lang-en">
-<h2>Support & Help</h2>
-<p>Need help with GearGrove? We're here to assist you.</p>
 
-<h3>Contact</h3>
-<p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
-<p>We typically respond within 24-48 hours.</p>
+  <!-- English Support -->
+  <div class="lang lang-en">
+    <h2>Support &amp; Help</h2>
+    <p>Need help with GearGrove? We're here to assist you.</p>
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+    <p>We typically respond within 24-48 hours.</p>
 
-<h3>GearGrove Pro</h3>
-<div class="faq-item">
-<strong>What's included in GearGrove Pro?</strong>
-<p>GearGrove Pro is a one-time purchase that unlocks four powerful features:</p>
-<ul>
-<li><strong>CSV Export/Import:</strong> Backup your entire collection and restore it anytime</li>
-<li><strong>Warranty Tracking:</strong> Monitor warranty expiration dates with automatic 30-day alerts</li>
-<li><strong>Gear Value Analysis:</strong> Track total purchase value and insured values across multiple currencies</li>
-<li><strong>Lens Coverage Charts:</strong> Visualize your focal length and aperture coverage with interactive charts and gap analysis</li>
-</ul>
+    <h3>GearGrove Pro</h3>
+    <div class="faq-item">
+      <strong>What's included in GearGrove Pro?</strong>
+      <p>GearGrove Pro is a one-time purchase that unlocks eight powerful features:</p>
+      <ul>
+        <li><strong>CSV Export/Import:</strong> Backup your entire collection and restore it anytime</li>
+        <li><strong>Warranty Tracking:</strong> Monitor warranty expiration dates with automatic 30-day alerts</li>
+        <li><strong>Gear Value Analysis:</strong> Track total purchase value and insured values across multiple currencies</li>
+        <li><strong>Lens Coverage Charts:</strong> Visualize your focal length and aperture coverage with interactive charts and gap analysis</li>
+        <li><strong>Lending Tracker:</strong> Record who borrowed your lens and when — a dedicated screen shows every lens currently lent out</li>
+        <li><strong>Condition Details:</strong> Flag lenses with fungus, note original packaging presence, and track functional status with visual indicators</li>
+        <li><strong>Wishlist:</strong> Track lenses you want to buy with target prices and priority levels</li>
+        <li><strong>Gear Kits:</strong> Create named kits (e.g. Wedding, Travel, Astro) grouping lenses for each shooting scenario</li>
+      </ul>
+    </div>
+    <div class="faq-item">
+      <strong>How much does GearGrove Pro cost?</strong>
+      <p>GearGrove Pro is a <strong>one-time purchase</strong> with lifetime access. No subscription, no recurring fees. The price varies by region and is displayed in your local currency in the App Store.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Can I try Pro features before buying?</strong>
+      <p>When you tap on a Pro feature you'll see a detailed explanation of what it does before purchasing.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I restore my purchase on a new device?</strong>
+      <p>Open GearGrove on your new device, tap any Pro feature, then tap "Restore Purchase" on the paywall screen. Your purchase is tied to your Apple ID and can be restored on any device.</p>
+    </div>
+
+    <h3>Frequently Asked Questions</h3>
+    <div class="faq-item">
+      <strong>How do I add a lens to my collection?</strong>
+      <p>Tap the "+" button in the main view. You can either browse the database of 320+ pre-loaded lenses (tap "Browse Common Lenses"), or manually enter all lens details. When browsing, filter by brand and mount to quickly find your lens.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I browse the lens database?</strong>
+      <p>When adding a lens, tap "Browse Common Lenses". Use the brand and mount filters at the top to narrow down results. The database includes 320+ lenses from Canon, Nikon, Sony, Sigma, Tamron, and other major brands. Tap any lens to auto-fill its specifications.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I edit a lens?</strong>
+      <p>Tap on any lens in your collection to view its details, then tap the edit button (pencil icon) in the top right. You can modify any information including specifications, purchase details, ratings, and notes.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I delete a lens?</strong>
+      <p>In the main list view, swipe left on any lens and tap "Delete". You'll be asked to confirm the deletion. Alternatively, you can mark a lens as "Sold" to keep its records while removing it from active inventory.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I rate my lenses?</strong>
+      <p>When adding or editing a lens, scroll to the "Purpose &amp; Rating" section. Tap the stars to rate from 1–5, or tap a filled star to remove the rating. You can also sort your collection by rating to see your favorites first.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How does the coverage analysis work? <span class="pro-badge">PRO</span></strong>
+      <p>Tap the chart icon in the toolbar to view your collection's coverage. The analysis shows: 1) Focal length coverage across your collection, 2) Aperture range visualization, 3) Focal length vs aperture scatter plot, and 4) Gap analysis identifying missing focal lengths or aperture ranges.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I track warranties? <span class="pro-badge">PRO</span></strong>
+      <p>When adding or editing a lens, scroll to "Insurance (Optional)" and tap "Add Warranty Expiry Date". Enter the warranty end date and optionally add warranty details. Lenses expiring within 30 days will trigger alerts on the main screen.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I view my collection's total value? <span class="pro-badge">PRO</span></strong>
+      <p>Tap the dollar sign icon ($) in the toolbar to view the Gear Value screen. This shows total purchase value and insured value by currency, plus a sortable list of all lenses from most to least expensive.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I export my collection? <span class="pro-badge">PRO</span></strong>
+      <p>Go to the Import/Export screen (tap the up arrow icon). Tap "Export to CSV" to create a backup file of your entire collection including all specifications, ratings, purchase info, warranty data, and notes.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I import lenses from CSV? <span class="pro-badge">PRO</span></strong>
+      <p>Go to Import/Export and tap "Import from CSV". Select your CSV file. The importer automatically detects duplicates and skips them. After import, you'll see a summary of total records, successfully imported, and skipped duplicates.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How does the Lending Tracker work? <span class="pro-badge">PRO</span></strong>
+      <p>When editing a lens, record who you lent it to and the date. A dedicated "Lent Out" screen shows every lens currently borrowed so you always know who has your gear. Tap a lens there to mark it as returned.</p>
+    </div>
+    <div class="faq-item">
+      <strong>What are Condition Details? <span class="pro-badge">PRO</span></strong>
+      <p>You can flag a lens as having fungus, mark whether you still have the original box and packaging, and track its functional status. Visual indicators appear throughout your collection so problem lenses are easy to spot at a glance.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How does the Wishlist work? <span class="pro-badge">PRO</span></strong>
+      <p>The Wishlist lets you add lenses you plan to buy, set a target price, and assign a priority (High / Medium / Low). Sort your wishlist by priority, date added, name, or price. Once you buy a lens, mark it as purchased to move it into your inventory.</p>
+    </div>
+    <div class="faq-item">
+      <strong>What are Gear Kits? <span class="pro-badge">PRO</span></strong>
+      <p>Gear Kits let you group lenses into named sets for different shooting scenarios — for example a "Wedding" kit, a "Travel" kit, or an "Astro" kit. The kit view shows which lenses are available and which are currently lent out, so you can pack smarter before every shoot.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How do I filter and sort my collection?</strong>
+      <p>Use the filter bar at the bottom of the main screen (iPhone) or left sidebar (iPad). You can: 1) Sort by brand, rating, focal length, aperture, weight, purchase date, or release year, 2) Filter by lens type (Prime/Zoom), brand, mount, 3) Show only weather-sealed or stabilized lenses, 4) Include/exclude sold lenses.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Is my data stored in the cloud?</strong>
+      <p>No. All your data is stored locally on your device. GearGrove doesn't sync to any cloud service, which means your lens collection data stays completely private and secure. You control your data through manual CSV exports (Pro feature).</p>
+    </div>
+
+    <h3>Tips &amp; Best Practices</h3>
+    <ul>
+      <li>Use the Browse database feature to quickly add lenses with accurate specifications</li>
+      <li>Add serial numbers to help with insurance claims and theft recovery</li>
+      <li>Rate your lenses to identify favorites and underused gear</li>
+      <li>Use Gear Kits to pre-plan what to bring for each type of shoot</li>
+      <li>Add lenses to the Wishlist to track what you want next and compare target prices</li>
+      <li>Use the Lending Tracker whenever you lend a lens — so you never forget who has it</li>
+      <li>Consider upgrading to Pro for warranty tracking, lending, kits, and collection insights</li>
+      <li>Mark lenses as sold rather than deleting to maintain history</li>
+    </ul>
+
+    <h3>System Requirements</h3>
+    <ul>
+      <li>iOS 15.0 or later</li>
+      <li>iPhone or iPad</li>
+      <li>No internet connection required</li>
+    </ul>
+  </div>
+
+  <!-- German Support -->
+  <div class="lang lang-de hidden">
+    <h2>Support &amp; Hilfe</h2>
+    <p>Benötigen Sie Unterstützung bei der Nutzung von GearGrove? Wir stehen Ihnen gerne zur Verfügung.</p>
+    <h3>Kontakt</h3>
+    <p>E-Mail: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+    <p>Wir antworten in der Regel innerhalb von 24–48 Stunden.</p>
+
+    <h3>GearGrove Pro</h3>
+    <div class="faq-item">
+      <strong>Was ist in GearGrove Pro enthalten?</strong>
+      <p>GearGrove Pro ist ein einmaliger Kauf, der acht leistungsstarke Funktionen freischaltet:</p>
+      <ul>
+        <li><strong>CSV-Export/Import:</strong> Sichern Sie Ihre gesamte Sammlung und stellen Sie sie jederzeit wieder her</li>
+        <li><strong>Garantieverfolgung:</strong> Überwachen Sie Ablaufdaten mit automatischen 30-Tage-Warnungen</li>
+        <li><strong>Wertanalyse:</strong> Verfolgen Sie Gesamtkauf- und Versicherungswerte in mehreren Währungen</li>
+        <li><strong>Abdeckungsdiagramme:</strong> Visualisieren Sie Brennweiten- und Blendenabdeckung mit Lückenanalyse</li>
+        <li><strong>Verleih-Tracker:</strong> Erfassen Sie, wer Ihr Objektiv wann geliehen hat — eine eigene Ansicht zeigt alle aktuell verliehenen Objektive</li>
+        <li><strong>Zustandsdetails:</strong> Pilzbefall kennzeichnen, Originalverpackung vermerken und Funktionsstatus mit visuellen Indikatoren verfolgen</li>
+        <li><strong>Wunschliste:</strong> Gewünschte Objektive mit Zielpreisen und Prioritäten verwalten</li>
+        <li><strong>Gear-Kits:</strong> Benannte Kits erstellen (z.B. Hochzeit, Reise, Astro) und Objektive nach Aufnahmesituation gruppieren</li>
+      </ul>
+    </div>
+    <div class="faq-item">
+      <strong>Was kostet GearGrove Pro?</strong>
+      <p>GearGrove Pro ist ein <strong>einmaliger Kauf</strong> mit lebenslangem Zugriff. Kein Abonnement, keine wiederkehrenden Gebühren. Der Preis variiert je nach Region und wird im App Store in Ihrer Landeswährung angezeigt.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Kann ich Pro-Funktionen vor dem Kauf testen?</strong>
+      <p>Wenn Sie auf eine Pro-Funktion tippen, sehen Sie eine detaillierte Erklärung, bevor Sie den Kauf abschließen.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Wie stelle ich meinen Kauf auf einem neuen Gerät wieder her?</strong>
+      <p>Öffnen Sie GearGrove auf Ihrem neuen Gerät, tippen Sie auf eine Pro-Funktion und dann auf „Kauf wiederherstellen". Ihr Kauf ist mit Ihrer Apple-ID verknüpft.</p>
+    </div>
+
+    <h3>Häufig gestellte Fragen</h3>
+    <div class="faq-item"><strong>Wie füge ich ein Objektiv hinzu?</strong><p>Tippen Sie auf die Schaltfläche „+" und durchsuchen Sie die Datenbank mit über 320 Objektiven oder geben Sie die Daten manuell ein.</p></div>
+    <div class="faq-item"><strong>Wie bearbeite ich ein Objektiv?</strong><p>Tippen Sie auf ein Objektiv und dann auf das Stiftsymbol oben rechts, um alle Details zu bearbeiten.</p></div>
+    <div class="faq-item"><strong>Wie lösche ich ein Objektiv?</strong><p>Wischen Sie in der Listenansicht nach links und tippen Sie auf „Löschen". Alternativ können Sie ein Objektiv als „Verkauft" markieren, um die Aufzeichnungen beizubehalten.</p></div>
+    <div class="faq-item"><strong>Wie funktioniert die Abdeckungsanalyse? <span class="pro-badge">PRO</span></strong><p>Tippen Sie auf das Diagrammsymbol in der Symbolleiste, um Brennweiten- und Blendenabdeckung mit interaktiven Charts und Lückenanalyse zu visualisieren.</p></div>
+    <div class="faq-item"><strong>Wie funktioniert der Verleih-Tracker? <span class="pro-badge">PRO</span></strong><p>Beim Bearbeiten eines Objektivs können Sie eintragen, an wen Sie es verliehen haben und wann. Eine eigene Ansicht zeigt alle aktuell verliehenen Objektive. Tippen Sie auf ein Objektiv, um es als zurückgegeben zu markieren.</p></div>
+    <div class="faq-item"><strong>Was sind Zustandsdetails? <span class="pro-badge">PRO</span></strong><p>Mit GearGrove Pro können Sie Pilzbefall kennzeichnen, das Vorhandensein der Originalverpackung vermerken und den Funktionsstatus verfolgen. Visuelle Indikatoren helfen dabei, problematische Objektive schnell zu erkennen.</p></div>
+    <div class="faq-item"><strong>Wie funktioniert die Wunschliste? <span class="pro-badge">PRO</span></strong><p>Die Wunschliste ermöglicht es, geplante Käufe hinzuzufügen, Zielpreise festzulegen und eine Priorität (Hoch / Mittel / Niedrig) zu vergeben. Nach dem Kauf kann ein Objektiv als erworben markiert und in das Inventar übernommen werden.</p></div>
+    <div class="faq-item"><strong>Was sind Gear-Kits? <span class="pro-badge">PRO</span></strong><p>Gear-Kits ermöglichen es, Objektive in benannte Sets für verschiedene Aufnahmesituationen zu gruppieren — z.B. ein „Hochzeits"-Kit oder ein „Reise"-Kit. Die Kit-Ansicht zeigt, welche Objektive verfügbar und welche aktuell verliehen sind.</p></div>
+    <div class="faq-item"><strong>Wie filtere und sortiere ich meine Sammlung?</strong><p>Verwenden Sie die Filterleiste am unteren Bildschirmrand (iPhone) oder die linke Seitenleiste (iPad). Sie können nach Marke, Bewertung, Brennweite, Blende, Gewicht, Kaufdatum oder Erscheinungsjahr sortieren und nach Objektivtyp, Marke, Bajonett und weiteren Merkmalen filtern.</p></div>
+    <div class="faq-item"><strong>Werden Daten in der Cloud gespeichert?</strong><p>Nein. Alle Daten bleiben ausschließlich lokal auf Ihrem Gerät.</p></div>
+
+    <h3>Systemanforderungen</h3>
+    <ul>
+      <li>iOS 15.0 oder neuer</li>
+      <li>iPhone oder iPad</li>
+      <li>Keine Internetverbindung erforderlich</li>
+    </ul>
+  </div>
+
+  <!-- Spanish Support -->
+  <div class="lang lang-es hidden">
+    <h2>Soporte y Ayuda</h2>
+    <p>¿Necesitas asistencia con GearGrove? Estamos aquí para ayudarte.</p>
+    <h3>Contacto</h3>
+    <p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+    <p>Normalmente respondemos dentro de 24 a 48 horas.</p>
+
+    <h3>GearGrove Pro</h3>
+    <div class="faq-item">
+      <strong>¿Qué incluye GearGrove Pro?</strong>
+      <p>GearGrove Pro es una compra única que desbloquea ocho funciones poderosas:</p>
+      <ul>
+        <li><strong>Exportación/Importación CSV:</strong> Respalda toda tu colección y restáurala cuando quieras</li>
+        <li><strong>Seguimiento de Garantía:</strong> Monitorea fechas de vencimiento con alertas automáticas de 30 días</li>
+        <li><strong>Análisis de Valor:</strong> Rastrea el valor total de compra y valores asegurados en múltiples monedas</li>
+        <li><strong>Gráficos de Cobertura:</strong> Visualiza tu cobertura de longitud focal y apertura con análisis de brechas</li>
+        <li><strong>Registro de Préstamos:</strong> Anota a quién prestaste un objetivo y cuándo — una pantalla dedicada muestra todos los objetivos actualmente prestados</li>
+        <li><strong>Detalles de Estado:</strong> Marca objetivos con hongos, indica si tienes el embalaje original y rastrea el estado funcional con indicadores visuales</li>
+        <li><strong>Lista de Deseos:</strong> Registra objetivos que quieres comprar con precios objetivo y niveles de prioridad</li>
+        <li><strong>Kits de Equipo:</strong> Crea kits con nombre (p. ej. Boda, Viaje, Astro) agrupando objetivos por escenario de disparo</li>
+      </ul>
+    </div>
+    <div class="faq-item">
+      <strong>¿Cuánto cuesta GearGrove Pro?</strong>
+      <p>GearGrove Pro es una <strong>compra única</strong> con acceso de por vida. Sin suscripción, sin tarifas recurrentes. El precio varía según la región y se muestra en tu moneda local en el App Store.</p>
+    </div>
+    <div class="faq-item">
+      <strong>¿Puedo probar las funciones Pro antes de comprar?</strong>
+      <p>Al tocar cualquier función Pro, verás una explicación detallada de lo que hace antes de realizar la compra.</p>
+    </div>
+    <div class="faq-item">
+      <strong>¿Cómo restauro mi compra en un nuevo dispositivo?</strong>
+      <p>Abre GearGrove en tu nuevo dispositivo, toca cualquier función Pro y luego "Restaurar compra". Tu compra está vinculada a tu Apple ID.</p>
+    </div>
+
+    <h3>Preguntas Frecuentes</h3>
+    <div class="faq-item"><strong>¿Cómo agrego un objetivo?</strong><p>Toca el botón "+" y navega la base de datos con más de 320 objetivos, o agrégalo manualmente con todos sus detalles.</p></div>
+    <div class="faq-item"><strong>¿Cómo edito un objetivo?</strong><p>Toca cualquier objetivo y luego el ícono de lápiz en la esquina superior derecha para modificar su información.</p></div>
+    <div class="faq-item"><strong>¿Cómo elimino un objetivo?</strong><p>Desliza hacia la izquierda y toca "Eliminar", o márcalo como "Vendido" para conservar el historial sin tenerlo en el inventario activo.</p></div>
+    <div class="faq-item"><strong>¿Cómo funciona el análisis de cobertura? <span class="pro-badge">PRO</span></strong><p>Toca el ícono de gráfico en la barra de herramientas para visualizar la cobertura de longitudes focales y aperturas con gráficos interactivos y análisis de brechas.</p></div>
+    <div class="faq-item"><strong>¿Cómo funciona el Registro de Préstamos? <span class="pro-badge">PRO</span></strong><p>Al editar un objetivo puedes registrar a quién lo prestaste y cuándo. Una pantalla dedicada muestra todos los objetivos actualmente prestados. Toca uno para marcarlo como devuelto.</p></div>
+    <div class="faq-item"><strong>¿Qué son los Detalles de Estado? <span class="pro-badge">PRO</span></strong><p>Puedes marcar objetivos con hongos, indicar si conservas el embalaje original y rastrear el estado funcional. Indicadores visuales te ayudan a identificar rápidamente objetivos con problemas.</p></div>
+    <div class="faq-item"><strong>¿Cómo funciona la Lista de Deseos? <span class="pro-badge">PRO</span></strong><p>La Lista de Deseos te permite agregar objetivos que planeas comprar, establecer un precio objetivo y asignar una prioridad (Alta / Media / Baja). Una vez comprado, márcalo como adquirido para moverlo a tu inventario.</p></div>
+    <div class="faq-item"><strong>¿Qué son los Kits de Equipo? <span class="pro-badge">PRO</span></strong><p>Los Kits de Equipo te permiten agrupar objetivos en conjuntos con nombre para diferentes escenarios — por ejemplo un kit "Boda", "Viaje" o "Astro". La vista del kit muestra qué objetivos están disponibles y cuáles están prestados, para que puedas prepararte mejor antes de cada sesión.</p></div>
+    <div class="faq-item"><strong>¿Cómo filtro y ordeno mi colección?</strong><p>Usa la barra de filtros en la parte inferior de la pantalla principal (iPhone) o la barra lateral izquierda (iPad). Puedes ordenar por marca, calificación, longitud focal, apertura, peso, fecha de compra o año de lanzamiento, y filtrar por tipo de objetivo, marca, montura y otras características.</p></div>
+    <div class="faq-item"><strong>¿Se almacenan datos en la nube?</strong><p>No. Toda la información se guarda localmente en tu dispositivo. GearGrove no sincroniza con ningún servicio en la nube.</p></div>
+
+    <h3>Requisitos del Sistema</h3>
+    <ul>
+      <li>iOS 15.0 o posterior</li>
+      <li>iPhone o iPad</li>
+      <li>No requiere conexión a Internet</li>
+    </ul>
+  </div>
+
 </div>
 
-<div class="faq-item">
-<strong>How much does GearGrove Pro cost?</strong>
-<p>GearGrove Pro is a <strong>one-time purchase</strong> with lifetime access. No subscription, no recurring fees. The price varies by region and is displayed in your local currency in the App Store.</p>
-</div>
-
-<div class="faq-item">
-<strong>Can I try Pro features before buying?</strong>
-<p>When you tap on a Pro feature (Coverage Analysis, Gear Value, Warranty Tracking, or CSV Export/Import), you'll see a detailed explanation of what it does before purchasing.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I restore my purchase on a new device?</strong>
-<p>Open GearGrove on your new device, tap any Pro feature, then tap "Restore Purchase" on the paywall screen. Your purchase is tied to your Apple ID and can be restored on any device.</p>
-</div>
-
-<h3>Frequently Asked Questions</h3>
-
-<div class="faq-item">
-<strong>How do I add a lens to my collection?</strong>
-<p>Tap the "+" button in the main view. You can either browse the database of 195+ pre-loaded lenses (tap "Browse Common Lenses"), or manually enter all lens details. When browsing, filter by brand and mount to quickly find your lens.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I browse the lens database?</strong>
-<p>When adding a lens, tap "Browse Common Lenses". Use the brand and mount filters at the top to narrow down results. The database includes 195+ lenses from Canon, Nikon, Sony, Sigma, Tamron, and other major brands. Tap any lens to auto-fill its specifications.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I edit a lens?</strong>
-<p>Tap on any lens in your collection to view its details, then tap the edit button (pencil icon) in the top right. You can modify any information including specifications, purchase details, ratings, and notes.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I delete a lens?</strong>
-<p>In the main list view, swipe left on any lens and tap "Delete". You'll be asked to confirm the deletion. Alternatively, you can mark a lens as "Sold" to keep its records while removing it from active inventory.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I rate my lenses?</strong>
-<p>When adding or editing a lens, scroll to the "Purpose & Rating" section. Tap the stars to rate from 1-5, or tap a filled star to remove the rating. You can also sort your collection by rating to see your favorites first.</p>
-</div>
-
-<div class="faq-item">
-<strong>How does the coverage analysis work? <span class="pro-badge">PRO</span></strong>
-<p>Tap the chart icon in the toolbar to view your collection's coverage (requires Pro). The analysis shows: 1) Focal length coverage across your collection, 2) Aperture range visualization, 3) Focal length vs aperture scatter plot, and 4) Gap analysis identifying missing focal lengths or aperture ranges.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I track warranties? <span class="pro-badge">PRO</span></strong>
-<p>With GearGrove Pro, when adding or editing a lens, scroll to "Insurance (Optional)" and tap "Add Warranty Expiry Date". Enter the warranty end date and optionally add warranty details. Lenses expiring within 30 days will trigger alerts on the main screen.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I view my collection's total value? <span class="pro-badge">PRO</span></strong>
-<p>With GearGrove Pro, tap the dollar sign icon ($) in the toolbar to view the Gear Value screen. This shows total purchase value and insured value by currency, plus a sortable list of all lenses from most to least expensive.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I export my collection? <span class="pro-badge">PRO</span></strong>
-<p>With GearGrove Pro, go to the Import/Export screen (tap the up arrow icon). Tap "Export to CSV" to create a backup file of your entire collection including all specifications, ratings, purchase info, warranty data, and notes.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I import lenses from CSV? <span class="pro-badge">PRO</span></strong>
-<p>With GearGrove Pro, go to Import/Export and tap "Import from CSV". Select your CSV file. The importer automatically detects duplicates and skips them. After import, you'll see a summary of total records, successfully imported, and skipped duplicates.</p>
-</div>
-
-<div class="faq-item">
-<strong>How do I filter and sort my collection?</strong>
-<p>Use the filter bar at the bottom of the main screen (iPhone) or left sidebar (iPad). You can: 1) Sort by brand, rating, focal length, aperture, weight, purchase date, or release year, 2) Filter by lens type (Prime/Zoom), brand, mount, 3) Show only weather-sealed or stabilized lenses, 4) Include/exclude sold lenses.</p>
-</div>
-
-<div class="faq-item">
-<strong>Is my data stored in the cloud?</strong>
-<p>No. All your data is stored locally on your device. GearGrove doesn't sync to any cloud service, which means your lens collection data stays completely private and secure on your device. You control your data through manual CSV exports (Pro feature).</p>
-</div>
-
-<h3>Tips & Best Practices</h3>
-<ul>
-<li>Use the Browse database feature to quickly add lenses with accurate specifications</li>
-<li>Add serial numbers to help with insurance claims and theft recovery</li>
-<li>Rate your lenses to identify favorites and underused gear</li>
-<li>Consider upgrading to Pro for warranty tracking and collection insights</li>
-<li>Mark lenses as sold rather than deleting to maintain history</li>
-</ul>
-
-<h3>System Requirements</h3>
-<ul>
-<li>iOS 15.0 or later</li>
-<li>iPhone or iPad</li>
-<li>No internet connection required</li>
-</ul>
-</div>
-
-<!-- German Support -->
-<div class="lang lang-de hidden">
-<h2>Support & Hilfe</h2>
-<p>Benötigen Sie Unterstützung bei der Nutzung von GearGrove? Unser Team steht Ihnen gerne zur Verfügung.</p>
-
-<h3>Kontakt</h3>
-<p>E-Mail: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
-<p>Wir antworten in der Regel innerhalb von 24–48 Stunden.</p>
-
-<h3>GearGrove Pro</h3>
-<div class="faq-item">
-<strong>Was ist in GearGrove Pro enthalten?</strong>
-<p>GearGrove Pro ist ein einmaliger Kauf, der vier leistungsstarke Funktionen freischaltet:</p>
-<ul>
-<li><strong>CSV-Export/Import:</strong> Sichern Sie Ihre gesamte Sammlung</li>
-<li><strong>Garantieverfolgung:</strong> Überwachen Sie Ablaufdaten mit automatischen 30-Tage-Warnungen</li>
-<li><strong>Wertanalyse:</strong> Verfolgen Sie Gesamtkauf- und Versicherungswerte</li>
-<li><strong>Abdeckungsdiagramme:</strong> Visualisieren Sie Brennweiten- und Blendenabdeckung</li>
-</ul>
-</div>
-
-<div class="faq-item">
-<strong>Was kostet GearGrove Pro?</strong>
-<p>GearGrove Pro ist ein <strong>einmaliger Kauf</strong> mit lebenslangem Zugriff. Kein Abonnement, keine wiederkehrenden Gebühren.</p>
-</div>
-
-<div class="faq-item">
-<strong>Wie stelle ich meinen Kauf auf einem neuen Gerät wieder her?</strong>
-<p>Öffnen Sie GearGrove auf Ihrem neuen Gerät, tippen Sie auf eine Pro-Funktion und dann auf „Kauf wiederherstellen". Ihr Kauf ist mit Ihrer Apple-ID verknüpft.</p>
-</div>
-
-<h3>Häufig gestellte Fragen</h3>
-<div class="faq-item"><strong>Wie füge ich ein Objektiv hinzu?</strong><p>Tippen Sie auf die Schaltfläche „+" und durchsuchen Sie die Datenbank mit über 195 Objektiven oder fügen Sie manuell hinzu.</p></div>
-<div class="faq-item"><strong>Wie bearbeite ich ein Objektiv?</strong><p>Tippen Sie auf ein Objektiv und dann auf das Stiftsymbol oben rechts.</p></div>
-<div class="faq-item"><strong>Wie lösche ich ein Objektiv?</strong><p>Wischen Sie nach links und tippen Sie auf „Löschen" oder markieren Sie es als „Verkauft".</p></div>
-<div class="faq-item"><strong>Wie funktioniert die Abdeckungsanalyse? <span class="pro-badge">PRO</span></strong><p>Mit GearGrove Pro tippen Sie auf das Diagrammsymbol, um Brennweiten- und Blendenabdeckung zu visualisieren.</p></div>
-<div class="faq-item"><strong>Werden Daten in der Cloud gespeichert?</strong><p>Nein. Alle Daten bleiben lokal auf Ihrem Gerät.</p></div>
-
-<h3>Systemanforderungen</h3>
-<ul><li>iOS 15.0 oder neuer</li><li>iPhone oder iPad</li><li>Keine Internetverbindung erforderlich</li></ul>
-</div>
-
-<!-- Spanish Support -->
-<div class="lang lang-es hidden">
-<h2>Soporte y Ayuda</h2>
-<p>¿Necesitas asistencia con GearGrove? Nuestro equipo está aquí para ayudarte.</p>
-
-<h3>Contacto</h3>
-<p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
-<p>Normalmente respondemos dentro de 24 a 48 horas.</p>
-
-<h3>GearGrove Pro</h3>
-<div class="faq-item">
-<strong>¿Qué incluye GearGrove Pro?</strong>
-<p>GearGrove Pro es una compra única que desbloquea cuatro funciones poderosas:</p>
-<ul>
-<li><strong>Exportación/Importación CSV:</strong> Respalda toda tu colección</li>
-<li><strong>Seguimiento de Garantía:</strong> Monitorea fechas de vencimiento con alertas automáticas de 30 días</li>
-<li><strong>Análisis de Valor:</strong> Rastrea el valor total de compra y valores asegurados</li>
-<li><strong>Gráficos de Cobertura:</strong> Visualiza tu cobertura de longitud focal y apertura</li>
-</ul>
-</div>
-
-<div class="faq-item">
-<strong>¿Cuánto cuesta GearGrove Pro?</strong>
-<p>GearGrove Pro es una <strong>compra única</strong> con acceso de por vida. Sin suscripción, sin tarifas recurrentes.</p>
-</div>
-
-<div class="faq-item">
-<strong>¿Cómo restauro mi compra en un nuevo dispositivo?</strong>
-<p>Abre GearGrove en tu nuevo dispositivo, toca cualquier función Pro y luego "Restaurar compra". Tu compra está vinculada a tu Apple ID.</p>
-</div>
-
-<h3>Preguntas Frecuentes</h3>
-<div class="faq-item"><strong>¿Cómo agrego un objetivo?</strong><p>Toca el botón "+" y navega la base de datos con más de 195 objetivos o agrégalo manualmente.</p></div>
-<div class="faq-item"><strong>¿Cómo edito un objetivo?</strong><p>Toca cualquier objetivo y luego el ícono de lápiz en la esquina superior derecha.</p></div>
-<div class="faq-item"><strong>¿Cómo elimino un objetivo?</strong><p>Desliza hacia la izquierda y toca "Eliminar" o márcalo como "Vendido".</p></div>
-<div class="faq-item"><strong>¿Cómo funciona el análisis de cobertura? <span class="pro-badge">PRO</span></strong><p>Con GearGrove Pro, toca el ícono de gráfico para visualizar la cobertura de longitudes focales y aperturas.</p></div>
-<div class="faq-item"><strong>¿Se almacenan datos en la nube?</strong><p>No. Toda la información se guarda localmente en tu dispositivo.</p></div>
-
-<h3>Requisitos del Sistema</h3>
-<ul><li>iOS 15.0 o posterior</li><li>iPhone o iPad</li><li>No requiere conexión a Internet</li></ul>
-</div>
-</div>
-
-<!-- PRIVACY POLICY SECTION -->
+<!-- ==================== PRIVACY POLICY SECTION ==================== -->
 <div class="section hidden" id="privacy">
-<!-- English Privacy Policy -->
-<div class="lang lang-en">
-<h2>Privacy Policy</h2>
-<p><strong>Effective Date:</strong> November 7, 2025</p>
 
-<h3>Overview</h3>
-<p>GearGrove is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our photography lens inventory management application.</p>
+  <!-- English Privacy Policy -->
+  <div class="lang lang-en">
+    <h2>Privacy Policy</h2>
+    <p><strong>Effective Date:</strong> November 7, 2025</p>
+    <h3>Overview</h3>
+    <p>GearGrove is committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our photography lens inventory management application.</p>
+    <h3>Data Collection and Storage</h3>
+    <p><strong>Local Storage Only:</strong> GearGrove stores all your data locally on your device. We do NOT collect, transmit, or store any of your personal information on our servers or third-party servers.</p>
+    <p>The following information is stored locally on your device:</p>
+    <ul>
+      <li>Lens specifications (brand, model, focal length, aperture, etc.)</li>
+      <li>Purchase information (date, price, currency, condition)</li>
+      <li>Personal ratings and notes</li>
+      <li>Usage tracking data</li>
+      <li>Insurance and warranty information (Pro feature)</li>
+      <li>Serial numbers and firmware versions</li>
+      <li>Lending records (Pro feature)</li>
+      <li>Wishlist items and Gear Kits (Pro feature)</li>
+      <li>Any other data you enter into the app</li>
+    </ul>
+    <h3>In-App Purchases</h3>
+    <p>GearGrove offers an optional one-time purchase (GearGrove Pro) processed through Apple's In-App Purchase system. We do not collect or store any payment information. All payment processing is handled securely by Apple. Your purchase is tied to your Apple ID and can be restored on any device signed in with the same Apple ID.</p>
+    <h3>No Account Required</h3>
+    <p>GearGrove does not require you to create an account, provide an email address, or log in with any service. Your data remains completely private and under your control.</p>
+    <h3>No Internet Connection Required</h3>
+    <p>GearGrove works completely offline and does not require an internet connection to function. The app does not communicate with any external servers or services, except when processing In-App Purchases through Apple's secure payment system.</p>
+    <h3>Data Sharing</h3>
+    <p>We do NOT share, sell, rent, or trade any of your information with third parties. Since all data is stored locally on your device, we have no access to your lens collection or personal information.</p>
+    <h3>Data Export</h3>
+    <p>You have complete control over your data. With GearGrove Pro, you can export your lens collection in CSV format at any time. When you export data, you control where the file is saved and who has access to it.</p>
+    <h3>Analytics and Tracking</h3>
+    <p>GearGrove does NOT use any analytics services, tracking tools, or advertising networks. We do not collect usage statistics, crash reports, or any other information about how you use the app.</p>
+    <h3>Third-Party Services</h3>
+    <p>GearGrove does not integrate with or use any third-party services, APIs, or SDKs that could access your data, with the exception of Apple's In-App Purchase system for processing Pro feature purchases.</p>
+    <h3>Data Security</h3>
+    <p>Since all data is stored locally on your device, the security of your data depends on your device's security measures (passcode, Face ID, Touch ID, etc.). We recommend keeping your device secure and regularly backing up your data using the CSV export feature (Pro).</p>
+    <h3>Children's Privacy</h3>
+    <p>GearGrove does not knowingly collect any information from children. Since we don't collect any data, the app can be safely used by users of all ages.</p>
+    <h3>Data Deletion</h3>
+    <p>You can delete all your data at any time by deleting the app from your device. Uninstalling the app will permanently remove all your lens collection data. Your In-App Purchase history remains tied to your Apple ID and can be restored if you reinstall the app.</p>
+    <h3>Contact Us</h3>
+    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+    <p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+    <div class="note">
+      <strong>Summary:</strong> GearGrove is a privacy-first application. We don't collect, store, or transmit any of your personal information. All your lens collection data stays on your device, completely private and secure. The only data transmission occurs during In-App Purchase processing, which is handled securely by Apple.
+    </div>
+  </div>
 
-<h3>Data Collection and Storage</h3>
-<p><strong>Local Storage Only:</strong> GearGrove stores all your data locally on your device. We do NOT collect, transmit, or store any of your personal information on our servers or third-party servers.</p>
+  <!-- German Privacy Policy -->
+  <div class="lang lang-de hidden">
+    <h2>Datenschutzerklärung</h2>
+    <p><strong>Gültigkeitsdatum:</strong> 7. November 2025</p>
+    <h3>Überblick</h3>
+    <p>GearGrove verpflichtet sich, Ihre Privatsphäre zu schützen. Diese Datenschutzerklärung erläutert, wie wir Ihre Daten verarbeiten, wenn Sie unsere App zur Verwaltung von Kameraobjektiven verwenden.</p>
+    <h3>Datenerfassung und Speicherung</h3>
+    <p><strong>Nur lokale Speicherung:</strong> GearGrove speichert alle Daten ausschließlich lokal auf Ihrem Gerät. Es erfolgt keinerlei Übertragung personenbezogener Daten an Server oder Dritte.</p>
+    <p>Folgende Informationen werden lokal auf Ihrem Gerät gespeichert:</p>
+    <ul>
+      <li>Objektivspezifikationen (Marke, Modell, Brennweite, Blende usw.)</li>
+      <li>Kaufinformationen (Datum, Preis, Währung, Zustand)</li>
+      <li>Persönliche Bewertungen und Notizen</li>
+      <li>Nutzungsdaten</li>
+      <li>Versicherungs- und Garantieinformationen (Pro-Funktion)</li>
+      <li>Seriennummern und Firmware-Versionen</li>
+      <li>Verleihaufzeichnungen (Pro-Funktion)</li>
+      <li>Wunschliste und Gear-Kits (Pro-Funktion)</li>
+      <li>Alle weiteren von Ihnen eingegebenen Daten</li>
+    </ul>
+    <h3>In-App-Käufe</h3>
+    <p>GearGrove bietet einen optionalen einmaligen Kauf (GearGrove Pro), der über Apples In-App-Kaufsystem abgewickelt wird. Wir erfassen oder speichern keine Zahlungsinformationen. Die gesamte Zahlungsabwicklung erfolgt sicher durch Apple.</p>
+    <h3>Kein Konto erforderlich</h3>
+    <p>GearGrove verlangt keine Kontoerstellung oder Anmeldung. Ihre Daten bleiben vollständig privat und unter Ihrer Kontrolle.</p>
+    <h3>Keine Internetverbindung erforderlich</h3>
+    <p>Die App funktioniert vollständig offline, außer bei der Verarbeitung von In-App-Käufen über Apples sicheres Zahlungssystem.</p>
+    <h3>Datenweitergabe</h3>
+    <p>Wir verkaufen, vermieten oder teilen Ihre Informationen nicht mit Dritten. Da alle Daten lokal gespeichert werden, haben wir keinen Zugriff darauf.</p>
+    <h3>Datenexport</h3>
+    <p>Mit GearGrove Pro können Sie Ihre Sammlung jederzeit im CSV-Format exportieren. Sie bestimmen, wo die Datei gespeichert wird und wer Zugriff darauf hat.</p>
+    <h3>Analyse und Nachverfolgung</h3>
+    <p>GearGrove verwendet keinerlei Analyse- oder Tracking-Tools, Werbenetzwerke oder Absturzberichte.</p>
+    <h3>Drittdienste</h3>
+    <p>Es werden keine Drittanbieter-APIs oder SDKs eingebunden, mit Ausnahme von Apples In-App-Kaufsystem.</p>
+    <h3>Datensicherheit</h3>
+    <p>Da alle Daten lokal auf Ihrem Gerät gespeichert werden, hängt die Sicherheit Ihrer Daten von den Sicherheitsmaßnahmen Ihres Geräts ab (PIN, Face ID, Touch ID usw.).</p>
+    <h3>Datenlöschung</h3>
+    <p>Sie können alle Ihre Daten jederzeit löschen, indem Sie die App deinstallieren. Ihr In-App-Kaufverlauf bleibt mit Ihrer Apple-ID verknüpft und kann bei einer Neuinstallation wiederhergestellt werden.</p>
+    <h3>Kontakt</h3>
+    <p>E-Mail: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+    <div class="note"><strong>Zusammenfassung:</strong> GearGrove sammelt, speichert oder überträgt keine personenbezogenen Daten. Alle Informationen bleiben ausschließlich auf Ihrem Gerät. Die einzige Datenübertragung erfolgt während der In-App-Kaufabwicklung durch Apple.</div>
+  </div>
 
-<p>The following information is stored locally on your device:</p>
-<ul>
-<li>Lens specifications (brand, model, focal length, aperture, etc.)</li>
-<li>Purchase information (date, price, currency, condition)</li>
-<li>Personal ratings and notes</li>
-<li>Usage tracking data</li>
-<li>Insurance and warranty information (Pro feature)</li>
-<li>Serial numbers and firmware versions</li>
-<li>Any other data you enter into the app</li>
-</ul>
+  <!-- Spanish Privacy Policy -->
+  <div class="lang lang-es hidden">
+    <h2>Política de Privacidad</h2>
+    <p><strong>Fecha de vigencia:</strong> 7 de noviembre de 2025</p>
+    <h3>Resumen general</h3>
+    <p>GearGrove se compromete a proteger tu privacidad. Esta Política de Privacidad explica cómo manejamos tu información cuando usas nuestra aplicación de gestión de inventario de objetivos fotográficos.</p>
+    <h3>Recopilación y almacenamiento de datos</h3>
+    <p><strong>Solo almacenamiento local:</strong> GearGrove almacena todos los datos únicamente en tu dispositivo. No se transmiten datos personales a servidores ni a terceros.</p>
+    <p>La siguiente información se almacena localmente en tu dispositivo:</p>
+    <ul>
+      <li>Especificaciones del objetivo (marca, modelo, longitud focal, apertura, etc.)</li>
+      <li>Información de compra (fecha, precio, moneda, estado)</li>
+      <li>Calificaciones personales y notas</li>
+      <li>Datos de seguimiento de uso</li>
+      <li>Información de seguro y garantía (función Pro)</li>
+      <li>Números de serie y versiones de firmware</li>
+      <li>Registros de préstamos (función Pro)</li>
+      <li>Lista de deseos y kits de equipo (función Pro)</li>
+      <li>Cualquier otro dato que ingreses en la aplicación</li>
+    </ul>
+    <h3>Compras dentro de la app</h3>
+    <p>GearGrove ofrece una compra única opcional (GearGrove Pro) procesada a través del sistema de compras dentro de la app de Apple. No recopilamos ni almacenamos información de pago. Todo el procesamiento de pagos es manejado de forma segura por Apple.</p>
+    <h3>No se requiere cuenta</h3>
+    <p>No es necesario crear una cuenta ni iniciar sesión. Tus datos permanecen completamente privados y bajo tu control.</p>
+    <h3>No se requiere conexión a Internet</h3>
+    <p>La aplicación funciona totalmente sin conexión, excepto durante el procesamiento de compras dentro de la app a través del sistema de pago seguro de Apple.</p>
+    <h3>Compartición de datos</h3>
+    <p>No compartimos, vendemos ni alquilamos tu información a terceros. Todos los datos permanecen locales en tu dispositivo y no tenemos acceso a ellos.</p>
+    <h3>Exportación de datos</h3>
+    <p>Con GearGrove Pro, puedes exportar tu colección en formato CSV en cualquier momento. Tú controlas dónde se guarda el archivo y quién tiene acceso.</p>
+    <h3>Análisis y seguimiento</h3>
+    <p>GearGrove no utiliza ningún tipo de servicio de análisis, herramientas de seguimiento ni redes publicitarias.</p>
+    <h3>Servicios de terceros</h3>
+    <p>No se integran servicios de terceros, con excepción del sistema de compras dentro de la app de Apple.</p>
+    <h3>Seguridad de los datos</h3>
+    <p>Dado que todos los datos se almacenan localmente en tu dispositivo, su seguridad depende de las medidas de seguridad de tu dispositivo (código de acceso, Face ID, Touch ID, etc.).</p>
+    <h3>Eliminación de datos</h3>
+    <p>Puedes eliminar todos tus datos en cualquier momento desinstalando la app. El historial de compras dentro de la app permanece vinculado a tu Apple ID y puede restaurarse si vuelves a instalar la aplicación.</p>
+    <h3>Contacto</h3>
+    <p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+    <div class="note"><strong>Resumen:</strong> GearGrove no recopila, almacena ni transmite ningún dato personal. Toda la información permanece únicamente en tu dispositivo. La única transmisión de datos ocurre durante el procesamiento de compras dentro de la app por parte de Apple.</div>
+  </div>
 
-<h3>In-App Purchases</h3>
-<p>GearGrove offers an optional one-time purchase (GearGrove Pro) processed through Apple's In-App Purchase system. We do not collect or store any payment information. All payment processing is handled securely by Apple. Your purchase is tied to your Apple ID and can be restored on any device signed in with the same Apple ID.</p>
-
-<h3>No Account Required</h3>
-<p>GearGrove does not require you to create an account, provide an email address, or log in with any service. Your data remains completely private and under your control.</p>
-
-<h3>No Internet Connection Required</h3>
-<p>GearGrove works completely offline and does not require an internet connection to function. The app does not communicate with any external servers or services, except when processing In-App Purchases through Apple's secure payment system.</p>
-
-<h3>Data Sharing</h3>
-<p>We do NOT share, sell, rent, or trade any of your information with third parties. Since all data is stored locally on your device, we have no access to your lens collection or personal information.</p>
-
-<h3>Data Export</h3>
-<p>You have complete control over your data. With GearGrove Pro, you can export your lens collection in CSV format at any time. When you export data, you control where the file is saved and who has access to it.</p>
-
-<h3>Analytics and Tracking</h3>
-<p>GearGrove does NOT use any analytics services, tracking tools, or advertising networks. We do not collect usage statistics, crash reports, or any other information about how you use the app.</p>
-
-<h3>Third-Party Services</h3>
-<p>GearGrove does not integrate with or use any third-party services, APIs, or SDKs that could access your data, with the exception of Apple's In-App Purchase system for processing Pro feature purchases.</p>
-
-<h3>Data Security</h3>
-<p>Since all data is stored locally on your device, the security of your data depends on your device's security measures (passcode, Face ID, Touch ID, etc.). We recommend keeping your device secure and regularly backing up your data using the CSV export feature (Pro).</p>
-
-<h3>Children's Privacy</h3>
-<p>GearGrove does not knowingly collect any information from children. Since we don't collect any data, the app can be safely used by users of all ages.</p>
-
-<h3>Data Deletion</h3>
-<p>You can delete all your data at any time by deleting the app from your device. Uninstalling the app will permanently remove all your lens collection data. Your In-App Purchase history remains tied to your Apple ID and can be restored if you reinstall the app.</p>
-
-<h3>Contact Us</h3>
-<p>If you have any questions about this Privacy Policy, please contact us at:</p>
-<p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
-
-<div class="note">
-<strong>Summary:</strong> GearGrove is a privacy-first application. We don't collect, store, or transmit any of your personal information. All your lens collection data stays on your device, completely private and secure. The only data transmission occurs during In-App Purchase processing, which is handled securely by Apple.
-</div>
-</div>
-
-<!-- German Privacy Policy -->
-<div class="lang lang-de hidden">
-<h2>Datenschutzerklärung</h2>
-<p><strong>Gültigkeitsdatum:</strong> 7. November 2025</p>
-
-<h3>Überblick</h3>
-<p>GearGrove verpflichtet sich, Ihre Privatsphäre zu schützen. Diese Datenschutzerklärung erläutert, wie wir Ihre Daten verarbeiten.</p>
-
-<h3>Datenerfassung und Speicherung</h3>
-<p><strong>Nur lokale Speicherung:</strong> GearGrove speichert alle Daten ausschließlich lokal auf Ihrem Gerät. Es erfolgt keinerlei Übertragung an Server oder Dritte.</p>
-
-<h3>In-App-Käufe</h3>
-<p>GearGrove bietet einen optionalen einmaligen Kauf (GearGrove Pro), der über Apples In-App-Kaufsystem abgewickelt wird. Wir erfassen oder speichern keine Zahlungsinformationen. Die gesamte Zahlungsabwicklung erfolgt sicher durch Apple.</p>
-
-<h3>Kein Konto erforderlich</h3>
-<p>GearGrove verlangt keine Kontoerstellung oder Anmeldung. Ihre Daten bleiben vollständig privat und unter Ihrer Kontrolle.</p>
-
-<h3>Keine Internetverbindung erforderlich</h3>
-<p>Die App funktioniert vollständig offline, außer bei der Verarbeitung von In-App-Käufen über Apples sicheres Zahlungssystem.</p>
-
-<h3>Datenweitergabe</h3>
-<p>Wir verkaufen oder teilen keine Ihrer Informationen. Da alle Daten lokal gespeichert werden, haben wir keinen Zugriff darauf.</p>
-
-<h3>Datenexport</h3>
-<p>Mit GearGrove Pro können Sie Ihre Sammlung jederzeit im CSV-Format exportieren.</p>
-
-<h3>Analyse und Nachverfolgung</h3>
-<p>GearGrove verwendet keinerlei Analyse- oder Tracking-Tools.</p>
-
-<h3>Drittdienste</h3>
-<p>Es werden keine Drittanbieter-APIs oder SDKs eingebunden, mit Ausnahme von Apples In-App-Kaufsystem.</p>
-
-<h3>Kontakt</h3>
-<p>E-Mail: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
-
-<div class="note"><strong>Zusammenfassung:</strong> GearGrove sammelt, speichert oder überträgt keine personenbezogenen Daten. Alle Informationen bleiben ausschließlich auf Ihrem Gerät. Die einzige Datenübertragung erfolgt während der In-App-Kaufabwicklung durch Apple.</div>
-</div>
-
-<!-- Spanish Privacy Policy -->
-<div class="lang lang-es hidden">
-<h2>Política de Privacidad</h2>
-<p><strong>Fecha de vigencia:</strong> 7 de noviembre de 2025</p>
-
-<h3>Resumen</h3>
-<p>GearGrove se compromete a proteger tu privacidad. Esta Política de Privacidad explica cómo manejamos tu información.</p>
-
-<h3>Recopilación y almacenamiento de datos</h3>
-<p><strong>Solo almacenamiento local:</strong> GearGrove almacena todos los datos únicamente en tu dispositivo. No se transmiten datos a servidores ni a terceros.</p>
-
-<h3>Compras dentro de la app</h3>
-<p>GearGrove ofrece una compra única opcional (GearGrove Pro) procesada a través del sistema de compras dentro de la app de Apple. No recopilamos ni almacenamos información de pago. Todo el procesamiento de pagos es manejado de forma segura por Apple.</p>
-
-<h3>No se requiere cuenta</h3>
-<p>No es necesario crear una cuenta ni iniciar sesión. Tus datos permanecen completamente privados.</p>
-
-<h3>No se requiere conexión a Internet</h3>
-<p>La aplicación funciona totalmente sin conexión, excepto durante el procesamiento de compras dentro de la app a través del sistema de pago seguro de Apple.</p>
-
-<h3>Compartición de datos</h3>
-<p>No compartimos, vendemos ni alquilamos tu información. Todos los datos permanecen locales en tu dispositivo.</p>
-
-<h3>Exportación de datos</h3>
-<p>Con GearGrove Pro, puedes exportar tu colección en formato CSV en cualquier momento.</p>
-
-<h3>Análisis y seguimiento</h3>
-<p>GearGrove no utiliza ningún tipo de servicio de análisis ni herramientas de seguimiento.</p>
-
-<h3>Servicios de terceros</h3>
-<p>No se integran servicios de terceros, con excepción del sistema de compras dentro de la app de Apple.</p>
-
-<h3>Contacto</h3>
-<p>Email: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
-
-<div class="note"><strong>Resumen:</strong> GearGrove no recopila, almacena ni transmite ningún dato personal. Toda la información permanece únicamente en tu dispositivo. La única transmisión de datos ocurre durante el procesamiento de compras dentro de la app por parte de Apple.</div>
-</div>
 </div>
 </div>
 
 <footer>
-<p>© 2025 GearGrove. Made with ❤️ for photographers by Andres Wetzel.</p>
-<p><a href="#home" onclick="showSection('home')">Home</a> | <a href="#support" onclick="showSection('support')">Support</a> | <a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a></p>
+  <p>© 2025 GearGrove. Made with ❤️ for photographers. Contact: <a href="mailto:bandurria.apps@gmail.com">bandurria.apps@gmail.com</a></p>
+  <p><a href="#home" onclick="showSection('home')">Home</a> | <a href="#support" onclick="showSection('support')">Support</a> | <a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a></p>
 </footer>
 </body>
 </html>
